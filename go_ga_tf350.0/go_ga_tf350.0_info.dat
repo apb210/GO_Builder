@@ -1,0 +1,12 @@
+=========================================================
+Building go model from PDB file charmm_setup/ga_polarh_wt.pdb
+Target folding temperature =  350.000 K 
+Key for naming output files = ga
+Number of NC-linked repeats = 1
+Non-go weighting ('gamma') =    0.000
+Default non-go contact distance =    5.500
+Scaling side-chain contacts by    1.000
+Scaling backbone contacts by    1.000
+Will build model from single structure
+Base for output file names = go_ga_tf350.0/go_ga_tf350.0
+=========================================================

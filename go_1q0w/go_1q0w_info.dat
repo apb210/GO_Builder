@@ -1,0 +1,15 @@
+=========================================================
+This go model generated with the command:
+"go_builder.py -k 1q0w --gmx -p --bind-n-go 1q0w_edit.pdb"
+Building go model from PDB file 1q0w_edit.pdb
+Target folding temperatures =  350.000  K
+Key for naming output files = 1q0w
+Number of NC-linked repeats = 1
+Non-go weighting ('gamma') =    0.000
+Default non-go contact distance =    5.500
+Scaling side-chain contacts by    1.000
+Scaling backbone contacts by    1.000
+Writing GROMACS files
+Will build model from single structure
+Base for output file names = go_1q0w/go_1q0w
+=========================================================

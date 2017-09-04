@@ -1,0 +1,218 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+                   (CHARMM) - Developmental Version 31a2   February 15, 2004   
+       Copyright(c) 1984-2001  President and Fellows of Harvard College
+                              All Rights Reserved
+      Current operating system: Linux-2.4.21-27.0.1.ELsmp(i686)@liberty.nidd
+                 Created on  4/13/ 5 at 18:29:59 by user: best        
+
+            Maximum number of ATOMS:     60120, and RESidues:       72000
+            Current HEAP size:        10240000, and STACK size:   2000000
+
+ RDTITL> * MAKE PSF FROM GO MODEL
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    stream "../go_ga_tf350.0/go_ga_tf350.0_top.inp"
+ VOPEN> Attempting to open::../go_ga_tf350.0/go_ga_tf350.0_top.inp::
+ OPNLGU> Unit 99 opened for READONLY access to ../go_ga_tf350.0/go_ga_tf350.0_top.inp
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * THIS CHARMM .TOP FILE DESCRIBES A GO MODEL OF GA
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR GO MODEL OF GA
+ RDTITL> *
+  
+ CHARMM>     
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    stream "../go_ga_tf350.0/go_ga_tf350.0_parm.inp"
+ VOPEN> Attempting to open::../go_ga_tf350.0/go_ga_tf350.0_parm.inp::
+ OPNLGU> Unit 99 opened for READONLY access to ../go_ga_tf350.0/go_ga_tf350.0_parm.inp
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * THIS CHARMM .PARAM FILE DESCRIBES A GO MODEL OF GA
+ RDTITL> * PARAMETERS SCALED TO OBTAIN A TF OF:   350.000000
+ RDTITL> * SCALING ALL NATIVE CONTACTS BY A FACTOR OF     1.534351
+ RDTITL>  
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    read param card
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR GO MODEL OF GA
+ RDTITL>  
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    stream "../go_ga_tf350.0/go_ga_tf350.0_seq.inp"
+ VOPEN> Attempting to open::../go_ga_tf350.0/go_ga_tf350.0_seq.inp::
+ OPNLGU> Unit 99 opened for READONLY access to ../go_ga_tf350.0/go_ga_tf350.0_seq.inp
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * THIS CHARMM .SEQ FILE DESCRIBES A GO MODEL OF GA
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    read sequence card
+ MAINIO> Sequence information being read from unit  99.
+ RDTITL> * SEQUENCE FOR GO MODEL OF GA
+ RDTITL> *
+  
+ SEQRDR>    47
+  
+ SEQRDR>    G1     G2     G3     G4     G5     G6     G7     G8
+  
+ SEQRDR>    G9     G10    G11    G12    G13    G14    G15    G16
+  
+ SEQRDR>    G17    G18    G19    G20    G21    G22    G23    G24
+  
+ SEQRDR>    G25    G26    G27    G28    G29    G30    G31    G32
+  
+ SEQRDR>    G33    G34    G35    G36    G37    G38    G39    G40
+  
+ SEQRDR>    G41    G42    G43    G44    G45    G46    G47
+
+          RESIDUE SEQUENCE --    47 RESIDUES
+          G1  G2  G3  G4  G5  G6  G7  G8  G9  G10 G11 G12 G13 G14 G15 G16 G17 G18 G19 G20 
+          G21 G22 G23 G24 G25 G26 G27 G28 G29 G30 G31 G32 G33 G34 G35 G36 G37 G38 G39 G40 
+          G41 G42 G43 G44 G45 G46 G47 
+  
+ CHARMM>     
+  
+ CHARMM>    generate PROT setup
+ NO PATCHING WILL BE DONE ON THE FIRST RESIDUE
+ NO PATCHING WILL BE DONE ON THE LAST  RESIDUE
+ GENPSF> Segment   1 has been generated. Its identifier is PROT.
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        1   Number of residues   =       47
+         Number of atoms         =       47   Number of groups     =       47
+         Number of bonds         =       46   Number of angles     =       45
+         Number of dihedrals     =       44   Number of impropers  =        0
+         Number of cross-terms   =        0
+         Number of HB acceptors  =        0   Number of HB donors  =        0
+         Number of NB exclusions =        0   Total charge =    0.00000
+  
+ CHARMM>    rename resname ala sele all end
+ SELRPN>     47 atoms have been selected out of     47
+ FOR SEGMENT 'PROT' RESIDUE '1   ', RESNAME 'G1  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '2   ', RESNAME 'G2  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '3   ', RESNAME 'G3  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '4   ', RESNAME 'G4  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '5   ', RESNAME 'G5  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '6   ', RESNAME 'G6  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '7   ', RESNAME 'G7  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '8   ', RESNAME 'G8  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '9   ', RESNAME 'G9  ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '10  ', RESNAME 'G10 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '11  ', RESNAME 'G11 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '12  ', RESNAME 'G12 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '13  ', RESNAME 'G13 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '14  ', RESNAME 'G14 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '15  ', RESNAME 'G15 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '16  ', RESNAME 'G16 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '17  ', RESNAME 'G17 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '18  ', RESNAME 'G18 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '19  ', RESNAME 'G19 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '20  ', RESNAME 'G20 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '21  ', RESNAME 'G21 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '22  ', RESNAME 'G22 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '23  ', RESNAME 'G23 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '24  ', RESNAME 'G24 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '25  ', RESNAME 'G25 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '26  ', RESNAME 'G26 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '27  ', RESNAME 'G27 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '28  ', RESNAME 'G28 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '29  ', RESNAME 'G29 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '30  ', RESNAME 'G30 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '31  ', RESNAME 'G31 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '32  ', RESNAME 'G32 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '33  ', RESNAME 'G33 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '34  ', RESNAME 'G34 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '35  ', RESNAME 'G35 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '36  ', RESNAME 'G36 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '37  ', RESNAME 'G37 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '38  ', RESNAME 'G38 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '39  ', RESNAME 'G39 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '40  ', RESNAME 'G40 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '41  ', RESNAME 'G41 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '42  ', RESNAME 'G42 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '43  ', RESNAME 'G43 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '44  ', RESNAME 'G44 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '45  ', RESNAME 'G45 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '46  ', RESNAME 'G46 ' IS RENAMED TO 'ALA '
+ FOR SEGMENT 'PROT' RESIDUE '47  ', RESNAME 'G47 ' IS RENAMED TO 'ALA '
+  
+ CHARMM>     
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    open unit 10 read card name -
+ CHARMM>    "../go_ga_tf350.0/go_ga_tf350.0_linear.pdb"
+ VOPEN> Attempting to open::../go_ga_tf350.0/go_ga_tf350.0_linear.pdb::
+ OPNLGU> Unit 10 opened for READONLY access to ../go_ga_tf350.0/go_ga_tf350.0_linear.pdb
+  
+ CHARMM>    coor read pdb unit 10
+          SPATIAL COORDINATES BEING READ FROM UNIT 10
+ TITLE>  *
+  
+ CHARMM>    close unit 10
+ VCLOSE: Closing unit   10 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    open unit 20 write card name -
+ CHARMM>    "go_ga.psf"
+ VOPEN> Attempting to open::go_ga.psf::
+ OPNLGU> Unit 20 opened for WRITE access to go_ga.psf
+  
+ CHARMM>    write psf card unit 20
+ RDTITL> CLOSE UNIT 20
+ RDTITL> No title read.
+  
+ CHARMM>    close unit 20
+ VCLOSE: Closing unit   20 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+$$$$$$  New timer profile $$$$$
+ Total time              0.10017 Other:    0.00000
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MAXIMUM STACK SPACE USED IS   72000
+                    STACK CURRENTLY IN USE IS         0
+                    NO WARNINGS WERE ISSUED
+                    HEAP PRINTOUT-  HEAP SIZE  10240000
+                    SPACE CURRENTLY IN USE IS         0
+                    MAXIMUM SPACE USED IS           856
+                    FREE LIST
+            PRINHP> ADDRESS:         1 LENGTH:  10240000 NEXT:         0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     0.10  SECONDS 
+                         CPU TIME:     0.10  SECONDS 

@@ -1,0 +1,59 @@
+#!/usr/bin/env python
+#
+# imports raw pdb files from rcsb database and
+# makes them charmm-friendly
+
+Usage="""
+
+Usage:
+	importpdb [-h] [--help] [-s segi] [--segid=segi] [-f 19|22] 
+	[--ffield=<19|22> ] [--chain="X"] [-m model] -c X file1.pdb file2.pdb ...
+
+"""
+
+import sys, string, PDBFile, getopt
+
+if (len(sys.argv)==1):
+	print Usage
+	sys.exit(0)
+
+
+if __name__ == "__main__":
+	
+	ffield = 22
+	segid = "UNCHANGED"
+	chain = "ignore"
+	model = 0
+	optlist, files = getopt.getopt(sys.argv[1:], 'hf:s:c:m:', ['ffield=','help', 'segid=','chain=','model'])
+	for opt, val in optlist:
+		if opt in [ "-f", "--ffield" ]:
+			ffield = int(val)
+		elif opt in [ "-h", "--help" ]:
+			print Usage
+			sys.exit(0)
+		elif opt in [ "-c", "--chain" ]:
+			chain = val
+		elif opt in [ "-s", "--segid" ]:
+			segid = val
+		elif opt in [ "-m", "--model" ]:
+			model = int(val)
+	print ffield
+	print segid
+	print model
+
+	for file in files:
+		print "Importing file " + file + " ..."
+		outfile = file.split('.')[0] + '_charmm' + str(ffield) + ".pdb"
+		print outfile
+		pinp = PDBFile.PDBFile(file)
+		pdata = PDBFile.PDBData(pinp, chain,0,-1,model,1)
+		if (segid != "UNCHANGED"):
+			pdata.set_segid(segid)
+		if (ffield == 19):
+			pdata.charmm19ify()
+		else:
+			pdata.charmm22ify()
+
+		pout = PDBFile.PDBOutput(outfile) 
+		pout.append(pdata, "A")
+

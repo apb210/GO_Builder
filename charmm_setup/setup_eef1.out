@@ -1,0 +1,1398 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+                   (CHARMM) - Developmental Version 31a2   February 15, 2004   
+       Copyright(c) 1984-2001  President and Fellows of Harvard College
+                              All Rights Reserved
+      Current operating system: Linux-2.4.21-27.0.1.ELsmp(i686)@liberty.nidd
+                 Created on  4/13/ 5 at 18:15:51 by user: best        
+
+            Maximum number of ATOMS:     60120, and RESidues:       72000
+            Current HEAP size:        10240000, and STACK size:   2000000
+
+ RDTITL> * SET UP PROTEIN IN EEF1 FF
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    ! global run variables
+ CHARMM>    set nter "nter"
+ Parameter: NTER <- ""nter""
+  
+ CHARMM>    set cter "cter"
+ Parameter: CTER <- ""cter""
+  
+ CHARMM>    set fileroot "ga"
+ Parameter: FILEROOT <- ""ga""
+  
+ CHARMM>    set usedir 1
+ Parameter: USEDIR <- "1"
+  
+ CHARMM>     
+  
+ CHARMM>    bomlev -1
+  
+ CHARMM>    set segid PROT
+ Parameter: SEGID <- "PROT"
+  
+ CHARMM>    set this minim
+ Parameter: THIS <- "MINIM"
+  
+ CHARMM>     
+  
+ CHARMM>    ! Topology file
+ CHARMM>    open unit 3 read card name -
+ CHARMM>    "toph19_eef1.inp"
+ VOPEN> Attempting to open::toph19_eef1.inp::
+ OPNLGU> Unit  3 opened for READONLY access to toph19_eef1.inp
+  
+ CHARMM>    read rtf card unit 3
+ MAINIO> Residue topology file being read from unit   3.
+ TITLE> * TOPOLOGY FILE FOR PROTEINS USING EXPLICIT HYDROGEN ATOMS: VERSION 19
+ TITLE> * T. LAZARIDIS: HERE THE IONIC SIDECHAINS AND TERMINI ARE NEUTRALIZED
+ TITLE> * ALSO, A NEW ATOM TYPE HAS BEEN ADDED, CR, FOR 4-BONDED CARBON IN
+ TITLE> * AROMATICS AND ARGININE. MODIFICATIONS ARE MARKED BY TL
+ TITLE> *
+  
+ CHARMM>    close unit 3
+ VCLOSE: Closing unit    3 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    ! Parameter file
+ CHARMM>    open unit 3 read card name -
+ CHARMM>    "param19_eef1.inp"
+ VOPEN> Attempting to open::param19_eef1.inp::
+ OPNLGU> Unit  3 opened for READONLY access to param19_eef1.inp
+  
+ CHARMM>    read para card unit 3
+
+          PARAMETER FILE BEING READ FROM UNIT  3
+ TITLE> * - PARAMETER FILE PARAM19 * PEPTIDE GEOMETRY FROM RAMACHANDRAN ET AL BBA 359:298 (1974)
+ TITLE> * TORSIONS FROM HAGLER ET AL JACS 98:4600 (1976)
+ TITLE> * JORGENSEN NONBOND PARAMETERS JACS 103:3976-3985 WITH 1-4 RC=1.80/0.1
+ TITLE> *
+ PARRDR> NOTE: atom type "CR  " is removed from previous group
+ PARRDR> NOTE: atom type "OC  " is removed from previous group
+ PARRDR> NOTE: atom type "OT  " is removed from previous group
+ PARRDR> NOTE: atom type "OH2 " is removed from previous group
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    close unit 3
+ VCLOSE: Closing unit    3 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    open unit 10 read card name -
+ CHARMM>    "1prb_7-53_charmm19.pdb"
+ VOPEN> Attempting to open::1prb_7-53_charmm19.pdb::
+ OPNLGU> Unit 10 opened for READONLY access to 1prb_7-53_charmm19.pdb
+  
+ CHARMM>    read sequence pdb unit 10
+ MAINIO> Sequence information being read from unit  10.
+ TITLE>  *
+
+          RESIDUE SEQUENCE --    47 RESIDUES
+          LEU LYS ASN ALA LYS GLU ASP ALA ILE ALA GLU LEU LYS LYS ALA GLY ILE THR SER ASP 
+          PHE TYR PHE ASN ALA ILE ASN LYS ALA LYS THR VAL GLU GLU VAL ASN ALA LEU LYS ASN 
+          GLU ILE LEU LYS ALA HIS ALA 
+ ***** Message from SEQRDR ***** THE SYSTEM CONTAINS 17 TITRATABLE GROUPS
+ THE USER MUST PREDETERMINE THE PROTONATION STATE THROUGH THE SEQUENCE AND RTF
+ HIS -  1  ASP -  2  GLU -  5  LYS -  8  TYR -  1
+  
+ CHARMM>    generate @SEGID first nter last CTER setup
+ Parameter: SEGID -> "PROT"
+ THE PATCH 'NTER' WILL BE USED FOR THE FIRST RESIDUE
+ THE PATCH 'CTER' WILL BE USED FOR THE LAST  RESIDUE
+ GENPSF> Segment   1 has been generated. Its identifier is PROT.
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        1   Number of residues   =       47
+         Number of atoms         =      453   Number of groups     =      176
+         Number of bonds         =      456   Number of angles     =      660
+         Number of dihedrals     =      265   Number of impropers  =      197
+         Number of cross-terms   =        0
+         Number of HB acceptors  =       72   Number of HB donors  =       88
+         Number of NB exclusions =        9   Total charge =    0.00000
+  
+ CHARMM>    read coor pdb unit 10
+          SPATIAL COORDINATES BEING READ FROM UNIT 10
+ TITLE>  *
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=    9 IRES=    1 RESID=1    RES=LEU  ATOM=H   
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   10 IRES=    1 RESID=1    RES=LEU  ATOM=HA  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   11 IRES=    1 RESID=1    RES=LEU  ATOM=1HB 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   12 IRES=    1 RESID=1    RES=LEU  ATOM=2HB 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   13 IRES=    1 RESID=1    RES=LEU  ATOM=HG  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   14 IRES=    1 RESID=1    RES=LEU  ATOM=1HD1
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   15 IRES=    1 RESID=1    RES=LEU  ATOM=2HD1
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   16 IRES=    1 RESID=1    RES=LEU  ATOM=3HD1
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   17 IRES=    1 RESID=1    RES=LEU  ATOM=1HD2
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   18 IRES=    1 RESID=1    RES=LEU  ATOM=2HD2
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   19 IRES=    1 RESID=1    RES=LEU  ATOM=3HD2
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   30 IRES=    2 RESID=2    RES=LYS  ATOM=HA  
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   31 IRES=    2 RESID=2    RES=LYS  ATOM=1HB 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   32 IRES=    2 RESID=2    RES=LYS  ATOM=2HB 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   33 IRES=    2 RESID=2    RES=LYS  ATOM=1HG 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   34 IRES=    2 RESID=2    RES=LYS  ATOM=2HG 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   35 IRES=    2 RESID=2    RES=LYS  ATOM=1HD 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   36 IRES=    2 RESID=2    RES=LYS  ATOM=2HD 
+
+ ** WARNING ** For atom in coordinate file, the corresponding residue in the PSF lacks that atom:
+ INDEX=   37 IRES=    2 RESID=2    RES=LYS  ATOM=1HE 
+ ** WARNING ** After reading, there are no coordinates for selected atom:     1     1 LEU  HT1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:     2     1 LEU  HT2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:     4     1 LEU  HT3 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    20     2 LYS  HZ1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    21     2 LYS  HZ2 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    22     2 LYS  HZ3 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    32     3 ASN  HD21
+ ** WARNING ** After reading, there are no coordinates for selected atom:    33     3 ASN  HD22
+ ** WARNING ** After reading, there are no coordinates for selected atom:    50     5 LYS  HZ1 
+ ** WARNING ** After reading, there are no coordinates for selected atom:    51     5 LYS  HZ2 
+
+ ** A total of    38 selected atoms have no coordinates
+
+ ** A total of  328 warnings were encountered during coordinate reading **
+ *** LEVEL  2 WARNING *** BOMLEV IS   -1
+  
+ CHARMM>    close unit 10
+ VCLOSE: Closing unit   10 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    ic fill preserve
+  
+ CHARMM>    ic purge
+  
+ CHARMM>    ic para
+  
+ CHARMM>    ic print
+
+       INTERNAL COORDINATES
+ TITLE>  * SET UP PROTEIN IN EEF1 FF
+ TITLE>  *
+
+     NUMBER OF INTERNAL COORDINATES :        450
+
+   N     I       J       K       L   R(I(J/K)) T(I(JK/KJ)) PHI   T(JKL)   R(KL)
+
+    1   1 HT1   1 N     1 CA    1 C      1.0400  109.50  180.00  109.51   1.5287
+    2   1 HT2   1 CA    1 *N    1 HT1    1.0400  109.50  120.00  109.50   1.0400
+    3   1 HT3   1 CA    1 *N    1 HT2    1.0400  109.50  120.00  109.50   1.0400
+    4   1 N     1 CA    1 C     2 N      1.4891  109.51    4.81  117.59   1.3050
+    5   2 N     1 CA    1 *C    1 O      1.3050  117.59 -179.77  121.23   1.2149
+    6   1 CA    1 C     2 N     2 CA     1.5287  117.59 -179.71  119.87   1.4906
+    7   1 N     1 C     1 *CA   1 CB     1.4891  109.51  120.09  109.33   1.5295
+    8   1 N     1 CA    1 CB    1 CG     1.4891  109.60  158.82  109.29   1.5286
+    9   1 CA    1 CB    1 CG    1 CD1    1.5295  109.29  106.49  109.54   1.5285
+   10   1 CD1   1 CB    1 *CG   1 CD2    1.5285  109.54  120.02  109.44   1.5302
+   11   1 C     2 CA    2 *N    2 H      1.3050  119.87 -179.64  120.06   0.9801
+   12   1 C     2 N     2 CA    2 C      1.3050  119.87  -77.55  109.92   1.5287
+   13   2 N     2 CA    2 C     3 N      1.4906  109.92   49.12  117.69   1.3018
+   14   3 N     2 CA    2 *C    2 O      1.3018  117.69  179.42  121.18   1.2146
+   15   2 CA    2 C     3 N     3 CA     1.5287  117.69  179.45  119.78   1.4887
+   16   2 N     2 C     2 *CA   2 CB     1.4906  109.92  120.36  109.22   1.5268
+   17   2 N     2 CA    2 CB    2 CG     1.4906  109.67  -65.24  109.60   1.5295
+   18   2 CA    2 CB    2 CG    2 CD     1.5268  109.60 -143.68  109.40   1.5291
+   19   2 CB    2 CG    2 CD    2 CE     1.5295  109.40 -150.84  109.60   1.5303
+   20   2 CG    2 CD    2 CE    2 NZ     1.5291  109.60  165.63  109.44   1.4904
+   21   2 CD    2 CE    2 NZ    2 HZ1    1.5303  109.44  180.00  109.50   1.0400
+   22   2 HZ1   2 CE    2 *NZ   2 HZ2    1.0400  109.50  120.00  109.50   1.0400
+   23   2 HZ2   2 CE    2 *NZ   2 HZ3    1.0400  109.50  120.00  109.50   1.0400
+   24   2 C     3 CA    3 *N    3 H      1.3018  119.78  179.46  120.13   0.9803
+   25   2 C     3 N     3 CA    3 C      1.3018  119.78 -111.79  108.90   1.5294
+   26   3 N     3 CA    3 C     4 N      1.4887  108.90  -61.20  117.39   1.3037
+   27   4 N     3 CA    3 *C    3 O      1.3037  117.39  179.33  121.30   1.2142
+   28   3 CA    3 C     4 N     4 CA     1.5294  117.39  179.33  119.93   1.4885
+   29   3 N     3 C     3 *CA   3 CB     1.4887  108.90  120.26  109.78   1.5296
+   30   3 N     3 CA    3 CB    3 CG     1.4887  109.82   52.46  109.66   1.5288
+   31   3 CA    3 CB    3 CG    3 OD1    1.5296  109.66  129.58  120.58   1.2138
+   32   3 OD1   3 CB    3 *CG   3 ND2    1.2138  120.58  179.88  119.42   1.3054
+   33   3 OD1   3 CG    3 ND2   3 HD21   1.2138  120.00  180.00  120.00   0.9800
+   34   3 HD21  3 CG    3 *ND2  3 HD22   0.9800  120.00  180.00  120.00   0.9800
+   35   3 C     4 CA    4 *N    4 H      1.3037  119.93  179.27  119.99   0.9795
+   36   3 C     4 N     4 CA    4 C      1.3037  119.93  -80.36  108.98   1.5289
+   37   4 N     4 CA    4 C     5 N      1.4885  108.98    5.53  117.29   1.3060
+   38   5 N     4 CA    4 *C    4 O      1.3060  117.29 -179.89  121.38   1.2150
+   39   4 CA    4 C     5 N     5 CA     1.5289  117.29 -179.77  119.99   1.4881
+   40   4 N     4 C     4 *CA   4 CB     1.4885  108.98  119.86  109.55   1.5294
+   41   4 C     5 CA    5 *N    5 H      1.3060  119.99 -179.71  119.93   0.9822
+   42   4 C     5 N     5 CA    5 C      1.3060  119.99  -53.04  109.64   1.5300
+   43   5 N     5 CA    5 C     6 N      1.4881  109.64  -76.76  117.52   1.3050
+   44   6 N     5 CA    5 *C    5 O      1.3050  117.52 -179.90  121.23   1.2142
+   45   5 CA    5 C     6 N     6 CA     1.5300  117.52 -179.77  120.01   1.4913
+   46   5 N     5 C     5 *CA   5 CB     1.4881  109.64  119.86  109.45   1.5291
+   47   5 N     5 CA    5 CB    5 CG     1.4881  109.28 -123.29  109.52   1.5289
+   48   5 CA    5 CB    5 CG    5 CD     1.5291  109.52 -169.04  109.29   1.5291
+   49   5 CB    5 CG    5 CD    5 CE     1.5289  109.29  119.45  109.57   1.5303
+   50   5 CG    5 CD    5 CE    5 NZ     1.5291  109.57 -136.37  109.35   1.4902
+   51   5 CD    5 CE    5 NZ    5 HZ1    1.5303  109.35  180.00  109.50   1.0400
+   52   5 HZ1   5 CE    5 *NZ   5 HZ2    1.0400  109.50  120.00  109.50   1.0400
+   53   5 HZ2   5 CE    5 *NZ   5 HZ3    1.0400  109.50  120.00  109.50   1.0400
+   54   5 C     6 CA    6 *N    6 H      1.3050  120.01 -179.64  119.96   0.9806
+   55   5 C     6 N     6 CA    6 C      1.3050  120.01  -67.08  109.73   1.5289
+   56   6 N     6 CA    6 C     7 N      1.4913  109.73  -42.55  117.46   1.3044
+   57   7 N     6 CA    6 *C    6 O      1.3044  117.46 -179.64  121.29   1.2149
+   58   6 CA    6 C     7 N     7 CA     1.5289  117.46 -179.67  120.04   1.4894
+   59   6 N     6 C     6 *CA   6 CB     1.4913  109.73  120.06  109.27   1.5292
+   60   6 N     6 CA    6 CB    6 CG     1.4913  109.50 -125.63  109.33   1.5292
+   61   6 CA    6 CB    6 CG    6 CD     1.5292  109.33  161.28  109.55   1.5303
+   62   6 CB    6 CG    6 CD    6 OE1    1.5292  109.55   80.31  117.95   1.2196
+   63   6 OE1   6 CG    6 *CD   6 OE2    1.2196  117.95  179.99  117.99   1.2194
+   64   6 C     7 CA    7 *N    7 H      1.3044  120.04 -179.76  120.01   0.9797
+   65   6 C     7 N     7 CA    7 C      1.3044  120.04  -43.97  109.72   1.5302
+   66   7 N     7 CA    7 C     8 N      1.4894  109.72  -55.96  117.42   1.3037
+   67   8 N     7 CA    7 *C    7 O      1.3037  117.42 -179.76  121.25   1.2156
+   68   7 CA    7 C     8 N     8 CA     1.5302  117.42 -179.71  120.09   1.4904
+   69   7 N     7 C     7 *CA   7 CB     1.4894  109.72  119.96  109.40   1.5290
+   70   7 N     7 CA    7 CB    7 CG     1.4894  109.35 -105.70  109.47   1.5304
+   71   7 CA    7 CB    7 CG    7 OD1    1.5290  109.47   57.10  118.02   1.2193
+   72   7 OD1   7 CB    7 *CG   7 OD2    1.2193  118.02 -179.99  117.94   1.2204
+   73   7 C     8 CA    8 *N    8 H      1.3037  120.09 -179.71  119.90   0.9802
+   74   7 C     8 N     8 CA    8 C      1.3037  120.09  -70.11  109.70   1.5294
+   75   8 N     8 CA    8 C     9 N      1.4904  109.70  -59.13  117.53   1.3036
+   76   9 N     8 CA    8 *C    8 O      1.3036  117.53 -179.81  121.23   1.2156
+   77   8 CA    8 C     9 N     9 CA     1.5294  117.53 -179.81  120.05   1.4897
+   78   8 N     8 C     8 *CA   8 CB     1.4904  109.70  119.90  109.36   1.5291
+   79   8 C     9 CA    9 *N    9 H      1.3036  120.05 -179.90  120.01   0.9804
+   80   8 C     9 N     9 CA    9 C      1.3036  120.05  -48.48  109.70   1.5298
+   81   9 N     9 CA    9 C    10 N      1.4897  109.70  -32.39  117.52   1.3036
+   82  10 N     9 CA    9 *C    9 O      1.3036  117.52 -179.72  121.21   1.2152
+   83   9 CA    9 C    10 N    10 CA     1.5298  117.52 -179.77  119.98   1.4907
+   84   9 N     9 C     9 *CA   9 CB     1.4897  109.70  119.91  108.95   1.5263
+   85   9 N     9 CA    9 CB    9 CG1    1.4897  109.54  -67.45  109.69   1.5296
+   86   9 CA    9 CB    9 CG1   9 CD     1.5263  109.69  169.00  109.46   1.5300
+   87   9 CG1   9 CA    9 *CB   9 CG2    1.5296  109.69 -119.91  109.15   1.5281
+   88   9 C    10 CA   10 *N   10 H      1.3036  119.98 -179.95  120.10   0.9790
+   89   9 C    10 N    10 CA   10 C      1.3036  119.98  -62.71  109.11   1.5267
+   90  10 N    10 CA   10 C    11 N      1.4907  109.11  -22.98  117.10   1.3019
+   91  11 N    10 CA   10 *C   10 O      1.3019  117.10  179.85  121.45   1.2147
+   92  10 CA   10 C    11 N    11 CA     1.5267  117.10  179.78  120.19   1.4844
+   93  10 N    10 C    10 *CA  10 CB     1.4907  109.11  120.02  109.53   1.5299
+   94  10 C    11 CA   11 *N   11 H      1.3019  120.19  179.71  119.75   0.9796
+   95  10 C    11 N    11 CA   11 C      1.3019  120.19 -100.27  108.80   1.5302
+   96  11 N    11 CA   11 C    12 N      1.4844  108.80    0.48  117.02   1.3058
+   97  12 N    11 CA   11 *C   11 O      1.3058  117.02  179.85  121.47   1.2155
+   98  11 CA   11 C    12 N    12 CA     1.5302  117.02  179.90  120.30   1.4901
+   99  11 N    11 C    11 *CA  11 CB     1.4844  108.80  119.23  109.91   1.5283
+  100  11 N    11 CA   11 CB   11 CG     1.4844  108.96  166.65  109.52   1.5273
+  101  11 CA   11 CB   11 CG   11 CD     1.5283  109.52  148.47  109.45   1.5295
+  102  11 CB   11 CG   11 CD   11 OE1    1.5273  109.45   19.81  118.03   1.2196
+  103  11 OE1  11 CG   11 *CD  11 OE2    1.2196  118.03  179.95  118.01   1.2206
+  104  11 C    12 CA   12 *N   12 H      1.3058  120.30  179.94  119.85   0.9796
+  105  11 C    12 N    12 CA   12 C      1.3058  120.30  -97.01  109.42   1.5291
+  106  12 N    12 CA   12 C    13 N      1.4901  109.42  -54.91  117.28   1.3051
+  107  13 N    12 CA   12 *C   12 O      1.3051  117.28 -179.71  121.40   1.2145
+  108  12 CA   12 C    13 N    13 CA     1.5291  117.28 -179.77  120.23   1.4901
+  109  12 N    12 C    12 *CA  12 CB     1.4901  109.42  119.75  109.29   1.5303
+  110  12 N    12 CA   12 CB   12 CG     1.4901  109.38  -77.82  109.56   1.5294
+  111  12 CA   12 CB   12 CG   12 CD1    1.5303  109.56  -96.57  109.40   1.5301
+  112  12 CD1  12 CB   12 *CG  12 CD2    1.5301  109.40  119.98  109.32   1.5311
+  113  12 C    13 CA   13 *N   13 H      1.3051  120.23 -179.85  119.90   0.9804
+  114  12 C    13 N    13 CA   13 C      1.3051  120.23  -45.00  109.82   1.5305
+  115  13 N    13 CA   13 C    14 N      1.4901  109.82  -34.91  117.61   1.3056
+  116  14 N    13 CA   13 *C   13 O      1.3056  117.61 -179.82  121.21   1.2143
+  117  13 CA   13 C    14 N    14 CA     1.5305  117.61 -179.85  119.96   1.4902
+  118  13 N    13 C    13 *CA  13 CB     1.4901  109.82  120.15  109.39   1.5290
+  119  13 N    13 CA   13 CB   13 CG     1.4901  109.46  172.24  109.48   1.5305
+  120  13 CA   13 CB   13 CG   13 CD     1.5290  109.48 -163.06  109.45   1.5295
+  121  13 CB   13 CG   13 CD   13 CE     1.5305  109.45  -51.94  109.50   1.5300
+  122  13 CG   13 CD   13 CE   13 NZ     1.5295  109.50 -139.10  109.46   1.4909
+  123  13 CD   13 CE   13 NZ   13 HZ1    1.5300  109.46  180.00  109.50   1.0400
+  124  13 HZ1  13 CE   13 *NZ  13 HZ2    1.0400  109.50  120.00  109.50   1.0400
+  125  13 HZ2  13 CE   13 *NZ  13 HZ3    1.0400  109.50  120.00  109.50   1.0400
+  126  13 C    14 CA   14 *N   14 H      1.3056  119.96 -179.86  120.00   0.9795
+  127  13 C    14 N    14 CA   14 C      1.3056  119.96  -81.36  109.54   1.5313
+  128  14 N    14 CA   14 C    15 N      1.4902  109.54  -29.93  117.67   1.3053
+  129  15 N    14 CA   14 *C   14 O      1.3053  117.67  179.86  121.18   1.2155
+  130  14 CA   14 C    15 N    15 CA     1.5313  117.67  179.83  120.02   1.4909
+  131  14 N    14 C    14 *CA  14 CB     1.4902  109.54  120.13  109.60   1.5310
+  132  14 N    14 CA   14 CB   14 CG     1.4902  109.48 -144.92  109.64   1.5300
+  133  14 CA   14 CB   14 CG   14 CD     1.5310  109.64  146.02  109.53   1.5306
+  134  14 CB   14 CG   14 CD   14 CE     1.5300  109.53  102.47  109.59   1.5306
+  135  14 CG   14 CD   14 CE   14 NZ     1.5306  109.59  105.08  109.53   1.4906
+  136  14 CD   14 CE   14 NZ   14 HZ1    1.5306  109.53  180.00  109.50   1.0400
+  137  14 HZ1  14 CE   14 *NZ  14 HZ2    1.0400  109.50  120.00  109.50   1.0400
+  138  14 HZ2  14 CE   14 *NZ  14 HZ3    1.0400  109.50  120.00  109.50   1.0400
+  139  14 C    15 CA   15 *N   15 H      1.3053  120.02  179.80  119.97   0.9806
+  140  14 C    15 N    15 CA   15 C      1.3053  120.02  -59.43  109.44   1.5292
+  141  15 N    15 CA   15 C    16 N      1.4909  109.44  -17.21  117.45   1.3057
+  142  16 N    15 CA   15 *C   15 O      1.3057  117.45  179.96  121.31   1.2154
+  143  15 CA   15 C    16 N    16 CA     1.5292  117.45  179.97  120.00   1.4909
+  144  15 N    15 C    15 *CA  15 CB     1.4909  109.44  120.02  109.44   1.5303
+  145  15 C    16 CA   16 *N   16 H      1.3057  120.00  179.96  120.05   0.9803
+  146  15 C    16 N    16 CA   16 C      1.3057  120.00  107.83  109.49   1.5306
+  147  16 N    16 CA   16 C    17 N      1.4909  109.49  -21.71  117.44   1.3049
+  148  17 N    16 CA   16 *C   16 O      1.3049  117.44  179.98  121.22   1.2156
+  149  16 CA   16 C    17 N    17 CA     1.5306  117.44  179.99  120.00   1.4910
+  150  16 C    17 CA   17 *N   17 H      1.3049  120.00  179.98  119.97   0.9788
+  151  16 C    17 N    17 CA   17 C      1.3049  120.00  -77.11  109.49   1.5296
+  152  17 N    17 CA   17 C    18 N      1.4910  109.49  126.09  117.49   1.3053
+  153  18 N    17 CA   17 *C   17 O      1.3053  117.49  179.90  121.25   1.2143
+  154  17 CA   17 C    18 N    18 CA     1.5296  117.49  179.96  120.00   1.4896
+  155  17 N    17 C    17 *CA  17 CB     1.4910  109.49  119.98  109.50   1.5294
+  156  17 N    17 CA   17 CB   17 CG1    1.4910  109.43  -51.17  109.43   1.5307
+  157  17 CA   17 CB   17 CG1  17 CD     1.5294  109.43 -174.55  109.54   1.5292
+  158  17 CG1  17 CA   17 *CB  17 CG2    1.5307  109.43 -120.03  109.52   1.5304
+  159  17 C    18 CA   18 *N   18 H      1.3053  120.00 -179.98  119.99   0.9806
+  160  17 C    18 N    18 CA   18 C      1.3053  120.00 -126.92  109.45   1.5292
+  161  18 N    18 CA   18 C    19 N      1.4896  109.45   13.50  117.49   1.3052
+  162  19 N    18 CA   18 *C   18 O      1.3052  117.49  179.99  121.28   1.2154
+  163  18 CA   18 C    19 N    19 CA     1.5292  117.49  179.90  120.01   1.4900
+  164  18 N    18 C    18 *CA  18 CB     1.4896  109.45  120.04  109.51   1.5308
+  165  18 N    18 CA   18 CB   18 OG1    1.4896  109.49   29.35  109.38   1.4210
+  166  18 OG1  18 CA   18 *CB  18 CG2    1.4210  109.38 -120.14  109.55   1.5281
+  167  18 CA   18 CB   18 OG1  18 HG1    1.5308  109.38  148.69  107.98   0.9602
+  168  18 C    19 CA   19 *N   19 H      1.3052  120.01  179.86  120.03   0.9801
+  169  18 C    19 N    19 CA   19 C      1.3052  120.01  -63.03  109.34   1.5299
+  170  19 N    19 CA   19 C    20 N      1.4900  109.34  149.05  117.53   1.3037
+  171  20 N    19 CA   19 *C   19 O      1.3037  117.53 -179.92  121.18   1.2146
+  172  19 CA   19 C    20 N    20 CA     1.5299  117.53 -179.98  119.98   1.4896
+  173  19 N    19 C    19 *CA  19 CB     1.4900  109.34  119.98  109.57   1.5299
+  174  19 N    19 CA   19 CB   19 OG     1.4900  109.48 -101.60  109.31   1.4214
+  175  19 CA   19 CB   19 OG   19 HG     1.5299  109.31 -134.38  107.97   0.9597
+  176  19 C    20 CA   20 *N   20 H      1.3037  119.98  179.99  119.97   0.9803
+  177  19 C    20 N    20 CA   20 C      1.3037  119.98  -90.67  109.53   1.5286
+  178  20 N    20 CA   20 C    21 N      1.4896  109.53  -14.20  117.38   1.3027
+  179  21 N    20 CA   20 *C   20 O      1.3027  117.38  179.94  121.32   1.2145
+  180  20 CA   20 C    21 N    21 CA     1.5286  117.38  179.94  119.93   1.4887
+  181  20 N    20 C    20 *CA  20 CB     1.4896  109.53  120.10  109.49   1.5298
+  182  20 N    20 CA   20 CB   20 CG     1.4896  109.51  -66.04  109.57   1.5305
+  183  20 CA   20 CB   20 CG   20 OD1    1.5298  109.57   58.74  118.00   1.2194
+  184  20 OD1  20 CB   20 *CG  20 OD2    1.2194  118.00  179.95  117.95   1.2200
+  185  20 C    21 CA   21 *N   21 H      1.3027  119.93  180.00  120.00   0.9795
+  186  20 C    21 N    21 CA   21 C      1.3027  119.93  -73.82  109.34   1.5268
+  187  21 N    21 CA   21 C    22 N      1.4887  109.34   -5.51  117.24   1.3017
+  188  22 N    21 CA   21 *C   21 O      1.3017  117.24  179.19  121.38   1.2156
+  189  21 CA   21 C    22 N    22 CA     1.5268  117.24  179.25  120.14   1.4883
+  190  21 N    21 C    21 *CA  21 CB     1.4887  109.34  119.93  110.05   1.5294
+  191  21 N    21 CA   21 CB   21 CG     1.4887  109.19  156.58  109.73   1.5085
+  192  21 CA   21 CB   21 CG   21 CD1    1.5294  109.73  -49.48  119.96   1.3987
+  193  21 CD1  21 CB   21 *CG  21 CD2    1.3987  119.96 -179.62  119.97   1.3982
+  194  21 CD1  21 CG   21 CD2  21 CE2    1.3987  120.07   -0.03  120.03   1.4004
+  195  21 CD2  21 CG   21 CD1  21 CE1    1.3982  120.07   -0.04  120.00   1.4005
+  196  21 CG   21 CD1  21 CE1  21 CZ     1.3987  120.00    0.10  119.94   1.4003
+  197  21 C    22 CA   22 *N   22 H      1.3017  120.14  179.22  119.96   0.9815
+  198  21 C    22 N    22 CA   22 C      1.3017  120.14 -112.03  108.53   1.5248
+  199  22 N    22 CA   22 C    23 N      1.4883  108.53  -40.39  116.65   1.3004
+  200  23 N    22 CA   22 *C   22 O      1.3004  116.65  179.37  121.66   1.2148
+  201  22 CA   22 C    23 N    23 CA     1.5248  116.65  179.49  120.28   1.4870
+  202  22 N    22 C    22 *CA  22 CB     1.4883  108.53  119.48  109.67   1.5284
+  203  22 N    22 CA   22 CB   22 CG     1.4883  109.41  -68.29  108.83   1.5068
+  204  22 CA   22 CB   22 CG   22 CD1    1.5284  108.83  -21.48  119.66   1.3965
+  205  22 CD1  22 CB   22 *CG  22 CD2    1.3965  119.66  179.91  120.23   1.3983
+  206  22 CD2  22 CG   22 CD1  22 CE1    1.3983  120.11    0.02  120.10   1.3982
+  207  22 CD1  22 CG   22 CD2  22 CE2    1.3965  120.11   -0.06  119.92   1.3997
+  208  22 CG   22 CD1  22 CE1  22 CZ     1.3965  120.10    0.07  119.93   1.4004
+  209  22 CE2  22 CE1  22 *CZ  22 OH     1.4004  119.94 -179.83  120.00   1.3798
+  210  22 CE1  22 CZ   22 OH   22 HH     1.4004  120.00   33.29  108.04   0.9602
+  211  22 C    23 CA   23 *N   23 H      1.3004  120.28  179.67  120.07   0.9804
+  212  22 C    23 N    23 CA   23 C      1.3004  120.28  -78.79  109.26   1.5297
+  213  23 N    23 CA   23 C    24 N      1.4870  109.26  -40.59  117.38   1.3060
+  214  24 N    23 CA   23 *C   23 O      1.3060  117.38 -179.86  121.31   1.2151
+  215  23 CA   23 C    24 N    24 CA     1.5297  117.38 -179.87  119.97   1.4906
+  216  23 N    23 C    23 *CA  23 CB     1.4870  109.26  119.48  109.17   1.5275
+  217  23 N    23 CA   23 CB   23 CG     1.4870  109.30  -88.53  109.83   1.5120
+  218  23 CA   23 CB   23 CG   23 CD1    1.5275  109.83   -1.94  120.24   1.4014
+  219  23 CD1  23 CB   23 *CG  23 CD2    1.4014  120.24  179.80  119.82   1.4002
+  220  23 CD1  23 CG   23 CD2  23 CE2    1.4014  119.93    0.00  120.05   1.4006
+  221  23 CD2  23 CG   23 CD1  23 CE1    1.4002  119.93   -0.01  120.00   1.3996
+  222  23 CG   23 CD1  23 CE1  23 CZ     1.4014  120.00    0.00  120.03   1.4000
+  223  23 C    24 CA   24 *N   24 H      1.3060  119.97 -179.95  119.99   0.9809
+  224  23 C    24 N    24 CA   24 C      1.3060  119.97  -68.72  109.56   1.5299
+  225  24 N    24 CA   24 C    25 N      1.4906  109.56  -53.73  117.42   1.3042
+  226  25 N    24 CA   24 *C   24 O      1.3042  117.42  179.99  121.28   1.2152
+  227  24 CA   24 C    25 N    25 CA     1.5299  117.42  179.97  119.94   1.4906
+  228  24 N    24 C    24 *CA  24 CB     1.4906  109.56  120.16  109.40   1.5307
+  229  24 N    24 CA   24 CB   24 CG     1.4906  109.59 -112.43  109.48   1.5290
+  230  24 CA   24 CB   24 CG   24 OD1    1.5307  109.48   38.34  120.62   1.2153
+  231  24 OD1  24 CB   24 *CG  24 ND2    1.2153  120.62 -179.86  119.37   1.3064
+  232  24 OD1  24 CG   24 ND2  24 HD21   1.2153  120.01  180.00  120.00   0.9800
+  233  24 HD21 24 CG   24 *ND2 24 HD22   0.9800  120.00  180.00  120.00   0.9800
+  234  24 C    25 CA   25 *N   25 H      1.3042  119.94  179.92  119.99   0.9790
+  235  24 C    25 N    25 CA   25 C      1.3042  119.94  -63.92  109.31   1.5281
+  236  25 N    25 CA   25 C    26 N      1.4906  109.31   -3.92  117.39   1.3048
+  237  26 N    25 CA   25 *C   25 O      1.3048  117.39  179.95  121.32   1.2148
+  238  25 CA   25 C    26 N    26 CA     1.5281  117.39  179.96  120.07   1.4894
+  239  25 N    25 C    25 *CA  25 CB     1.4906  109.31  119.95  109.56   1.5303
+  240  25 C    26 CA   26 *N   26 H      1.3048  120.07  179.95  119.99   0.9802
+  241  25 C    26 N    26 CA   26 C      1.3048  120.07  -70.32  109.51   1.5302
+  242  26 N    26 CA   26 C    27 N      1.4894  109.51  -51.87  117.60   1.3053
+  243  27 N    26 CA   26 *C   26 O      1.3053  117.60 -179.97  121.23   1.2147
+  244  26 CA   26 C    27 N    27 CA     1.5302  117.60 -179.97  119.95   1.4896
+  245  26 N    26 C    26 *CA  26 CB     1.4894  109.51  119.97  109.55   1.5291
+  246  26 N    26 CA   26 CB   26 CG1    1.4894  109.39  -95.34  109.47   1.5298
+  247  26 CA   26 CB   26 CG1  26 CD     1.5291  109.47 -112.41  109.53   1.5299
+  248  26 CG1  26 CA   26 *CB  26 CG2    1.5298  109.47 -119.87  109.46   1.5284
+  249  26 C    27 CA   27 *N   27 H      1.3053  119.95  179.99  120.04   0.9807
+  250  26 C    27 N    27 CA   27 C      1.3053  119.95  -71.72  109.50   1.5304
+  251  27 N    27 CA   27 C    28 N      1.4896  109.50   -9.91  117.53   1.3044
+  252  28 N    27 CA   27 *C   27 O      1.3044  117.53  179.70  121.20   1.2154
+  253  27 CA   27 C    28 N    28 CA     1.5304  117.53  179.79  120.03   1.4908
+  254  27 N    27 C    27 *CA  27 CB     1.4896  109.50  120.18  109.61   1.5308
+  255  27 N    27 CA   27 CB   27 CG     1.4896  109.54   71.30  109.54   1.5295
+  256  27 CA   27 CB   27 CG   27 OD1    1.5308  109.54  -97.95  120.60   1.2153
+  257  27 OD1  27 CB   27 *CG  27 ND2    1.2153  120.60 -179.92  119.43   1.3047
+  258  27 OD1  27 CG   27 ND2  27 HD21   1.2153  119.97  180.00  120.00   0.9800
+  259  27 HD21 27 CG   27 *ND2 27 HD22   0.9800  120.00  180.00  120.00   0.9800
+  260  27 C    28 CA   28 *N   28 H      1.3044  120.03  179.84  119.99   0.9803
+  261  27 C    28 N    28 CA   28 C      1.3044  120.03  -85.63  109.21   1.5302
+  262  28 N    28 CA   28 C    29 N      1.4908  109.21  -25.10  117.42   1.3058
+  263  29 N    28 CA   28 *C   28 O      1.3058  117.42  179.95  121.32   1.2154
+  264  28 CA   28 C    29 N    29 CA     1.5302  117.42  179.96  120.12   1.4901
+  265  28 N    28 C    28 *CA  28 CB     1.4908  109.21  119.86  109.45   1.5305
+  266  28 N    28 CA   28 CB   28 CG     1.4908  109.50  -89.31  109.61   1.5309
+  267  28 CA   28 CB   28 CG   28 CD     1.5305  109.61 -129.56  109.44   1.5301
+  268  28 CB   28 CG   28 CD   28 CE     1.5309  109.44 -161.89  109.72   1.5310
+  269  28 CG   28 CD   28 CE   28 NZ     1.5301  109.72 -149.80  109.38   1.4906
+  270  28 CD   28 CE   28 NZ   28 HZ1    1.5310  109.38  180.00  109.50   1.0400
+  271  28 HZ1  28 CE   28 *NZ  28 HZ2    1.0400  109.50  120.00  109.50   1.0400
+  272  28 HZ2  28 CE   28 *NZ  28 HZ3    1.0400  109.50  120.00  109.50   1.0400
+  273  28 C    29 CA   29 *N   29 H      1.3058  120.12  179.98  119.93   0.9805
+  274  28 C    29 N    29 CA   29 C      1.3058  120.12  -41.48  109.47   1.5297
+  275  29 N    29 CA   29 C    30 N      1.4901  109.47 -179.01  117.55   1.3045
+  276  30 N    29 CA   29 *C   29 O      1.3045  117.55  179.92  121.25   1.2149
+  277  29 CA   29 C    30 N    30 CA     1.5297  117.55 -180.00  119.96   1.4894
+  278  29 N    29 C    29 *CA  29 CB     1.4901  109.47  119.97  109.41   1.5294
+  279  29 C    30 CA   30 *N   30 H      1.3045  119.96 -179.96  120.00   0.9799
+  280  29 C    30 N    30 CA   30 C      1.3045  119.96  -97.42  109.58   1.5292
+  281  30 N    30 CA   30 C    31 N      1.4894  109.58  -64.90  117.52   1.3048
+  282  31 N    30 CA   30 *C   30 O      1.3048  117.52  179.96  121.27   1.2150
+  283  30 CA   30 C    31 N    31 CA     1.5292  117.52  179.98  119.89   1.4894
+  284  30 N    30 C    30 *CA  30 CB     1.4894  109.58  120.01  109.50   1.5295
+  285  30 N    30 CA   30 CB   30 CG     1.4894  109.41  -73.70  109.32   1.5293
+  286  30 CA   30 CB   30 CG   30 CD     1.5295  109.32 -169.03  109.50   1.5290
+  287  30 CB   30 CG   30 CD   30 CE     1.5293  109.50  134.37  109.44   1.5294
+  288  30 CG   30 CD   30 CE   30 NZ     1.5290  109.44   94.90  109.43   1.4889
+  289  30 CD   30 CE   30 NZ   30 HZ1    1.5294  109.43  180.00  109.50   1.0400
+  290  30 HZ1  30 CE   30 *NZ  30 HZ2    1.0400  109.50  120.00  109.50   1.0400
+  291  30 HZ2  30 CE   30 *NZ  30 HZ3    1.0400  109.50  120.00  109.50   1.0400
+  292  30 C    31 CA   31 *N   31 H      1.3048  119.89 -179.99  120.06   0.9808
+  293  30 C    31 N    31 CA   31 C      1.3048  119.89 -120.18  109.41   1.5301
+  294  31 N    31 CA   31 C    32 N      1.4894  109.41 -170.22  117.65   1.3064
+  295  32 N    31 CA   31 *C   31 O      1.3064  117.65  179.97  121.18   1.2147
+  296  31 CA   31 C    32 N    32 CA     1.5301  117.65  179.96  119.87   1.4900
+  297  31 N    31 C    31 *CA  31 CB     1.4894  109.41  120.05  109.62   1.5314
+  298  31 N    31 CA   31 CB   31 OG1    1.4894  109.47   97.72  109.44   1.4218
+  299  31 OG1  31 CA   31 *CB  31 CG2    1.4218  109.44 -120.25  109.58   1.5296
+  300  31 CA   31 CB   31 OG1  31 HG1    1.5314  109.44 -130.79  108.02   0.9599
+  301  31 C    32 CA   32 *N   32 H      1.3064  119.87 -179.97  120.10   0.9806
+  302  31 C    32 N    32 CA   32 C      1.3064  119.87  -61.88  109.28   1.5252
+  303  32 N    32 CA   32 C    33 N      1.4900  109.28  -37.13  117.17   1.3009
+  304  33 N    32 CA   32 *C   32 O      1.3009  117.17  179.73  121.49   1.2155
+  305  32 CA   32 C    33 N    33 CA     1.5252  117.17  179.64  120.04   1.4878
+  306  32 N    32 C    32 *CA  32 CB     1.4900  109.28  120.25  109.58   1.5292
+  307  32 N    32 CA   32 CB   32 CG1    1.4900  109.72 -179.44  109.47   1.5286
+  308  32 CG1  32 CA   32 *CB  32 CG2    1.5286  109.47  119.93  109.39   1.5294
+  309  32 C    33 CA   33 *N   33 H      1.3009  120.04  179.52  120.25   0.9786
+  310  32 C    33 N    33 CA   33 C      1.3009  120.04  -63.88  109.07   1.5282
+  311  33 N    33 CA   33 C    34 N      1.4878  109.07  -28.02  117.32   1.3062
+  312  34 N    33 CA   33 *C   33 O      1.3062  117.32  179.62  121.38   1.2148
+  313  33 CA   33 C    34 N    34 CA     1.5282  117.32  179.64  120.02   1.4885
+  314  33 N    33 C    33 *CA  33 CB     1.4878  109.07  119.94  109.60   1.5296
+  315  33 N    33 CA   33 CB   33 CG     1.4878  109.56  -59.74  109.51   1.5307
+  316  33 CA   33 CB   33 CG   33 CD     1.5296  109.51 -164.33  109.55   1.5304
+  317  33 CB   33 CG   33 CD   33 OE1    1.5307  109.55   58.81  117.96   1.2209
+  318  33 OE1  33 CG   33 *CD  33 OE2    1.2209  117.96  179.96  118.04   1.2201
+  319  33 C    34 CA   34 *N   34 H      1.3062  120.02  179.66  120.03   0.9798
+  320  33 C    34 N    34 CA   34 C      1.3062  120.02  -80.46  108.98   1.5297
+  321  34 N    34 CA   34 C    35 N      1.4885  108.98  -34.08  117.34   1.3057
+  322  35 N    34 CA   34 *C   34 O      1.3057  117.34  179.50  121.34   1.2150
+  323  34 CA   34 C    35 N    35 CA     1.5297  117.34  179.57  119.98   1.4884
+  324  34 N    34 C    34 *CA  34 CB     1.4885  108.98  119.91  109.61   1.5313
+  325  34 N    34 CA   34 CB   34 CG     1.4885  109.57  -80.14  109.53   1.5302
+  326  34 CA   34 CB   34 CG   34 CD     1.5313  109.53  -55.93  109.49   1.5289
+  327  34 CB   34 CG   34 CD   34 OE1    1.5302  109.49  -28.50  118.03   1.2202
+  328  34 OE1  34 CG   34 *CD  34 OE2    1.2202  118.03  179.90  117.97   1.2200
+  329  34 C    35 CA   35 *N   35 H      1.3057  119.98  179.59  120.01   0.9793
+  330  34 C    35 N    35 CA   35 C      1.3057  119.98  -72.64  109.13   1.5281
+  331  35 N    35 CA   35 C    36 N      1.4884  109.13  -57.09  117.31   1.3039
+  332  36 N    35 CA   35 *C   35 O      1.3039  117.31  179.59  121.34   1.2152
+  333  35 CA   35 C    36 N    36 CA     1.5281  117.31  179.70  119.96   1.4887
+  334  35 N    35 C    35 *CA  35 CB     1.4884  109.13  119.80  109.39   1.5307
+  335  35 N    35 CA   35 CB   35 CG1    1.4884  109.52 -168.24  109.55   1.5287
+  336  35 CG1  35 CA   35 *CB  35 CG2    1.5287  109.55  119.96  109.43   1.5300
+  337  35 C    36 CA   36 *N   36 H      1.3039  119.96  179.83  120.02   0.9805
+  338  35 C    36 N    36 CA   36 C      1.3039  119.96  -61.80  109.08   1.5285
+  339  36 N    36 CA   36 C    37 N      1.4887  109.08  -30.54  117.36   1.3049
+  340  37 N    36 CA   36 *C   36 O      1.3049  117.36  179.64  121.30   1.2147
+  341  36 CA   36 C    37 N    37 CA     1.5285  117.36  179.70  119.96   1.4889
+  342  36 N    36 C    36 *CA  36 CB     1.4887  109.08  119.76  109.52   1.5304
+  343  36 N    36 CA   36 CB   36 CG     1.4887  109.45  -73.49  109.45   1.5305
+  344  36 CA   36 CB   36 CG   36 OD1    1.5304  109.45  -52.00  120.63   1.2142
+  345  36 OD1  36 CB   36 *CG  36 ND2    1.2142  120.63 -179.94  119.37   1.3051
+  346  36 OD1  36 CG   36 ND2  36 HD21   1.2142  120.00  180.00  120.00   0.9800
+  347  36 HD21 36 CG   36 *ND2 36 HD22   0.9800  120.00  180.00  120.00   0.9800
+  348  36 C    37 CA   37 *N   37 H      1.3049  119.96  179.76  120.03   0.9801
+  349  36 C    37 N    37 CA   37 C      1.3049  119.96  -67.52  109.13   1.5292
+  350  37 N    37 CA   37 C    38 N      1.4889  109.13  -41.38  117.41   1.3047
+  351  38 N    37 CA   37 *C   37 O      1.3047  117.41  179.82  121.29   1.2145
+  352  37 CA   37 C    38 N    38 CA     1.5292  117.41  179.89  119.95   1.4892
+  353  37 N    37 C    37 *CA  37 CB     1.4889  109.13  119.89  109.56   1.5307
+  354  37 C    38 CA   38 *N   38 H      1.3047  119.95  179.92  120.04   0.9813
+  355  37 C    38 N    38 CA   38 C      1.3047  119.95  -58.84  109.50   1.5304
+  356  38 N    38 CA   38 C    39 N      1.4892  109.50  -46.84  117.48   1.3051
+  357  39 N    38 CA   38 *C   38 O      1.3051  117.48 -179.81  121.24   1.2152
+  358  38 CA   38 C    39 N    39 CA     1.5304  117.48 -179.78  120.04   1.4900
+  359  38 N    38 C    38 *CA  38 CB     1.4892  109.50  119.84  109.30   1.5306
+  360  38 N    38 CA   38 CB   38 CG     1.4892  109.41  -94.16  109.55   1.5284
+  361  38 CA   38 CB   38 CG   38 CD1    1.5306  109.55  161.32  109.43   1.5296
+  362  38 CD1  38 CB   38 *CG  38 CD2    1.5296  109.43  119.86  109.45   1.5300
+  363  38 C    39 CA   39 *N   39 H      1.3051  120.04 -179.77  119.92   0.9802
+  364  38 C    39 N    39 CA   39 C      1.3051  120.04  -59.86  109.70   1.5305
+  365  39 N    39 CA   39 C    40 N      1.4900  109.70  -32.27  117.57   1.3059
+  366  40 N    39 CA   39 *C   39 O      1.3059  117.57 -179.91  121.20   1.2144
+  367  39 CA   39 C    40 N    40 CA     1.5305  117.57 -179.88  119.97   1.4903
+  368  39 N    39 C    39 *CA  39 CB     1.4900  109.70  120.13  109.58   1.5308
+  369  39 N    39 CA   39 CB   39 CG     1.4900  109.40 -119.32  109.59   1.5312
+  370  39 CA   39 CB   39 CG   39 CD     1.5308  109.59   75.00  109.59   1.5309
+  371  39 CB   39 CG   39 CD   39 CE     1.5312  109.59 -153.73  109.64   1.5306
+  372  39 CG   39 CD   39 CE   39 NZ     1.5309  109.64   54.49  109.50   1.4895
+  373  39 CD   39 CE   39 NZ   39 HZ1    1.5306  109.50  180.00  109.50   1.0400
+  374  39 HZ1  39 CE   39 *NZ  39 HZ2    1.0400  109.50  120.00  109.50   1.0400
+  375  39 HZ2  39 CE   39 *NZ  39 HZ3    1.0400  109.50  120.00  109.50   1.0400
+  376  39 C    40 CA   40 *N   40 H      1.3059  119.97 -179.89  120.00   0.9800
+  377  39 C    40 N    40 CA   40 C      1.3059  119.97  -77.31  109.62   1.5302
+  378  40 N    40 CA   40 C    41 N      1.4903  109.62  -19.33  117.55   1.3046
+  379  41 N    40 CA   40 *C   40 O      1.3046  117.55  179.89  121.23   1.2144
+  380  40 CA   40 C    41 N    41 CA     1.5302  117.55  179.84  119.91   1.4897
+  381  40 N    40 C    40 *CA  40 CB     1.4903  109.62  120.10  109.51   1.5297
+  382  40 N    40 CA   40 CB   40 CG     1.4903  109.46  -69.77  109.47   1.5288
+  383  40 CA   40 CB   40 CG   40 OD1    1.5297  109.47  -24.86  120.67   1.2151
+  384  40 OD1  40 CB   40 *CG  40 ND2    1.2151  120.67  179.93  119.37   1.3047
+  385  40 OD1  40 CG   40 ND2  40 HD21   1.2151  119.97  180.00  120.00   0.9800
+  386  40 HD21 40 CG   40 *ND2 40 HD22   0.9800  120.00  180.00  120.00   0.9800
+  387  40 C    41 CA   41 *N   41 H      1.3046  119.91  179.84  120.00   0.9801
+  388  40 C    41 N    41 CA   41 C      1.3046  119.91  -81.10  109.35   1.5290
+  389  41 N    41 CA   41 C    42 N      1.4897  109.35  -30.54  117.59   1.3040
+  390  42 N    41 CA   41 *C   41 O      1.3040  117.59  179.82  121.24   1.2146
+  391  41 CA   41 C    42 N    42 CA     1.5290  117.59  179.88  119.84   1.4885
+  392  41 N    41 C    41 *CA  41 CB     1.4897  109.35  120.12  109.62   1.5306
+  393  41 N    41 CA   41 CB   41 CG     1.4897  109.55 -124.53  109.48   1.5303
+  394  41 CA   41 CB   41 CG   41 CD     1.5306  109.48 -169.13  109.56   1.5304
+  395  41 CB   41 CG   41 CD   41 OE1    1.5303  109.56  -52.15  118.00   1.2202
+  396  41 OE1  41 CG   41 *CD  41 OE2    1.2202  118.00  179.91  118.02   1.2201
+  397  41 C    42 CA   42 *N   42 H      1.3040  119.84  179.88  120.07   0.9816
+  398  41 C    42 N    42 CA   42 C      1.3040  119.84  -55.10  109.36   1.5307
+  399  42 N    42 CA   42 C    43 N      1.4885  109.36  -36.21  117.48   1.3058
+  400  43 N    42 CA   42 *C   42 O      1.3058  117.48 -179.96  121.29   1.2150
+  401  42 CA   42 C    43 N    43 CA     1.5307  117.48  179.99  120.17   1.4888
+  402  42 N    42 C    42 *CA  42 CB     1.4885  109.36  120.07  109.47   1.5300
+  403  42 N    42 CA   42 CB   42 CG1    1.4885  109.58  -71.51  109.45   1.5303
+  404  42 CA   42 CB   42 CG1  42 CD     1.5300  109.45  126.14  109.48   1.5291
+  405  42 CG1  42 CA   42 *CB  42 CG2    1.5303  109.45 -119.93  109.48   1.5299
+  406  42 C    43 CA   43 *N   43 H      1.3058  120.17  179.98  119.80   0.9802
+  407  42 C    43 N    43 CA   43 C      1.3058  120.17  -58.91  109.68   1.5293
+  408  43 N    43 CA   43 C    44 N      1.4888  109.68  -24.27  117.62   1.3049
+  409  44 N    43 CA   43 *C   43 O      1.3049  117.62 -179.88  121.19   1.2147
+  410  43 CA   43 C    44 N    44 CA     1.5293  117.62 -179.91  119.76   1.4898
+  411  43 N    43 C    43 *CA  43 CB     1.4888  109.68  119.83  109.45   1.5285
+  412  43 N    43 CA   43 CB   43 CG     1.4888  109.24 -120.07  109.36   1.5284
+  413  43 CA   43 CB   43 CG   43 CD1    1.5285  109.36   52.86  109.66   1.5303
+  414  43 CD1  43 CB   43 *CG  43 CD2    1.5303  109.66  120.37  109.48   1.5312
+  415  43 C    44 CA   44 *N   44 H      1.3049  119.76 -179.90  120.12   0.9814
+  416  43 C    44 N    44 CA   44 C      1.3049  119.76 -122.88  109.60   1.5301
+  417  44 N    44 CA   44 C    45 N      1.4898  109.60  -21.64  117.51   1.3055
+  418  45 N    44 CA   44 *C   44 O      1.3055  117.51  179.84  121.22   1.2152
+  419  44 CA   44 C    45 N    45 CA     1.5301  117.51  179.89  120.05   1.4913
+  420  44 N    44 C    44 *CA  44 CB     1.4898  109.60  120.15  109.65   1.5318
+  421  44 N    44 CA   44 CB   44 CG     1.4898  109.44  -56.97  109.47   1.5316
+  422  44 CA   44 CB   44 CG   44 CD     1.5318  109.47 -171.14  109.61   1.5304
+  423  44 CB   44 CG   44 CD   44 CE     1.5316  109.61  172.43  109.50   1.5307
+  424  44 CG   44 CD   44 CE   44 NZ     1.5304  109.50  172.80  109.52   1.4903
+  425  44 CD   44 CE   44 NZ   44 HZ1    1.5307  109.52  180.00  109.50   1.0400
+  426  44 HZ1  44 CE   44 *NZ  44 HZ2    1.0400  109.50  120.00  109.50   1.0400
+  427  44 HZ2  44 CE   44 *NZ  44 HZ3    1.0400  109.50  120.00  109.50   1.0400
+  428  44 C    45 CA   45 *N   45 H      1.3055  120.05  179.94  119.97   0.9792
+  429  44 C    45 N    45 CA   45 C      1.3055  120.05  -91.36  109.61   1.5298
+  430  45 N    45 CA   45 C    46 N      1.4913  109.61   21.05  117.75   1.3063
+  431  46 N    45 CA   45 *C   45 O      1.3063  117.75  179.96  121.10   1.2148
+  432  45 CA   45 C    46 N    46 CA     1.5298  117.75  179.99  119.82   1.4907
+  433  45 N    45 C    45 *CA  45 CB     1.4913  109.61  120.08  109.45   1.5322
+  434  45 C    46 CA   46 *N   46 H      1.3063  119.82 -179.91  120.09   0.9801
+  435  45 C    46 N    46 CA   46 C      1.3063  119.82 -175.40  109.85   1.5317
+  436  46 N    46 CA   46 C    47 N      1.4907  109.85  -22.39  117.72   1.3052
+  437  47 N    46 CA   46 *C   46 O      1.3052  117.72  179.93  121.12   1.2146
+  438  46 CA   46 C    47 N    47 CA     1.5317  117.72  179.97  119.81   1.4916
+  439  46 N    46 C    46 *CA  46 CB     1.4907  109.85  120.05  109.58   1.5299
+  440  46 N    46 CA   46 CB   46 CG     1.4907  109.26  106.24  109.60   1.5037
+  441  46 CA   46 CB   46 CG   46 CD2    1.5299  109.60  -49.85  131.96   1.3728
+  442  46 CD2  46 CB   46 *CG  46 ND1    1.3728  131.96 -179.92  122.16   1.3860
+  443  46 CD2  46 CG   46 ND1  46 CE1    1.3728  105.88    0.02  107.53   1.3453
+  444  46 ND1  46 CG   46 CD2  46 NE2    1.3860  105.88    0.00  109.67   1.3916
+  445  46 CE1  46 CG   46 *ND1 46 HD1    1.3453  107.53  179.97  126.27   0.9793
+  446  46 C    47 CA   47 *N   47 H      1.3052  119.81 -180.00  120.04   0.9793
+  447  46 C    47 N    47 CA   47 C      1.3052  119.81 -118.83  109.53   1.5296
+  448  47 N    47 C    47 *CA  47 CB     1.4916  109.53  120.18  109.52   1.5297
+  449  47 N    47 CA   47 C    47 OT2    1.4916  109.53  180.00  117.50   1.2300
+  450  47 OT2  47 CA   47 *C   47 OT1    1.2300  117.50  180.00  118.04   1.2198
+  
+ CHARMM>    coor init sele all end
+ SELRPN>    453 atoms have been selected out of    453
+ SELECTED COORDINATES INITIALIZED IN THE MAIN SET.
+
+  
+ CHARMM>    ic seed 1 n 1 ca 1 c
+  
+ CHARMM>    ic build
+  
+ CHARMM>     
+  
+ CHARMM>    open unit 11 write card name -
+ CHARMM>    "ga_polarh_wt.pdb"
+ VOPEN> Attempting to open::ga_polarh_wt.pdb::
+ OPNLGU> Unit 11 opened for WRITE access to ga_polarh_wt.pdb
+  
+ CHARMM>    coor write pdb unit 11
+ RDTITL> CLOSE UNIT 11
+ RDTITL> No title read.
+  
+ CHARMM>    close unit 11
+ VCLOSE: Closing unit   11 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    open unit 11 write card name -
+ CHARMM>    "ga_polarh_wt.psf"
+ VOPEN> Attempting to open::ga_polarh_wt.psf::
+ OPNLGU> Unit 11 opened for WRITE access to ga_polarh_wt.psf
+  
+ CHARMM>    write psf card unit 11
+ RDTITL> CLOSE UNIT 11
+ RDTITL> No title read.
+  
+ CHARMM>    close unit 11
+ VCLOSE: Closing unit   11 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    faster on
+ MISCOM> FAST option: ON (generic fast routines)
+  
+ CHARMM>     
+  
+ CHARMM>    eef1 setup temp 298 unit 95 name "ffield/water/solvpar.inp"
+ VOPEN> Attempting to open::ffield/water/solvpar.inp::
+ OPNLGU> Unit  95 cannot be opened as ffield/water/solvpar.inp                                                                                                                                                                                                                                        
+
+      ***** LEVEL  0 WARNING FROM <OPNLGU> *****
+      ***** "OPEN" not possible.
+      ******************************************
+      BOMLEV ( -1) IS NOT REACHED. WRNLEV IS  5
+
+  
+ CHARMM>    update ctonnb 7.0 ctofnb 9.0 cutnb 10.0
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  SWITch   VATOm    VSWItch 
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 10.000 CTEXNB =999.000 CTONNB =  7.000 CTOFNB =  9.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  0.400 EPS    =  1.000
+ NBXMOD =      5
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found   1125 exclusions and    789 interactions(1-4)
+ <MAKGRP> found    454 group exclusions.
+ GENERATING ATOM EXCLUSION TABLE 
+ GENERATING GROUP EXCLUSION TABLE 
+Clustering atoms by rule
+   453 ATMS    153 CLUS    176 GRPS ARE ACTIVE 
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR    47438 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+    29449 ATOM PAIRS WERE FOUND FOR ATOM LIST
+     2770 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+  
+ CHARMM>     
+  
+ CHARMM>    eef1 print
+SLVPRINT> TOTAL SOLVATION FREE ENERGY:           0.000 Kcal/mol
+ SLVPRINT>                            G         H       CP
+    3 PROT 1    LEU  N    NH3        0.000      0.000      0.000
+    5 PROT 1    LEU  CA   CH1E       0.000      0.000      0.000
+    6 PROT 1    LEU  CB   CH2E       0.000      0.000      0.000
+    7 PROT 1    LEU  CG   CH1E       0.000      0.000      0.000
+    8 PROT 1    LEU  CD1  CH3E       0.000      0.000      0.000
+    9 PROT 1    LEU  CD2  CH3E       0.000      0.000      0.000
+   10 PROT 1    LEU  C    C          0.000      0.000      0.000
+   11 PROT 1    LEU  O    O          0.000      0.000      0.000
+   12 PROT 2    LYS  N    NH1        0.000      0.000      0.000
+   14 PROT 2    LYS  CA   CH1E       0.000      0.000      0.000
+   15 PROT 2    LYS  CB   CH2E       0.000      0.000      0.000
+   16 PROT 2    LYS  CG   CH2E       0.000      0.000      0.000
+   17 PROT 2    LYS  CD   CH2E       0.000      0.000      0.000
+   18 PROT 2    LYS  CE   CH2E       0.000      0.000      0.000
+   19 PROT 2    LYS  NZ   NH3        0.000      0.000      0.000
+   23 PROT 2    LYS  C    C          0.000      0.000      0.000
+   24 PROT 2    LYS  O    O          0.000      0.000      0.000
+   25 PROT 3    ASN  N    NH1        0.000      0.000      0.000
+   27 PROT 3    ASN  CA   CH1E       0.000      0.000      0.000
+   28 PROT 3    ASN  CB   CH2E       0.000      0.000      0.000
+   29 PROT 3    ASN  CG   C          0.000      0.000      0.000
+   30 PROT 3    ASN  OD1  O          0.000      0.000      0.000
+   31 PROT 3    ASN  ND2  NH2        0.000      0.000      0.000
+   34 PROT 3    ASN  C    C          0.000      0.000      0.000
+   35 PROT 3    ASN  O    O          0.000      0.000      0.000
+   36 PROT 4    ALA  N    NH1        0.000      0.000      0.000
+   38 PROT 4    ALA  CA   CH1E       0.000      0.000      0.000
+   39 PROT 4    ALA  CB   CH3E       0.000      0.000      0.000
+   40 PROT 4    ALA  C    C          0.000      0.000      0.000
+   41 PROT 4    ALA  O    O          0.000      0.000      0.000
+   42 PROT 5    LYS  N    NH1        0.000      0.000      0.000
+   44 PROT 5    LYS  CA   CH1E       0.000      0.000      0.000
+   45 PROT 5    LYS  CB   CH2E       0.000      0.000      0.000
+   46 PROT 5    LYS  CG   CH2E       0.000      0.000      0.000
+   47 PROT 5    LYS  CD   CH2E       0.000      0.000      0.000
+   48 PROT 5    LYS  CE   CH2E       0.000      0.000      0.000
+   49 PROT 5    LYS  NZ   NH3        0.000      0.000      0.000
+   53 PROT 5    LYS  C    C          0.000      0.000      0.000
+   54 PROT 5    LYS  O    O          0.000      0.000      0.000
+   55 PROT 6    GLU  N    NH1        0.000      0.000      0.000
+   57 PROT 6    GLU  CA   CH1E       0.000      0.000      0.000
+   58 PROT 6    GLU  CB   CH2E       0.000      0.000      0.000
+   59 PROT 6    GLU  CG   CH2E       0.000      0.000      0.000
+   60 PROT 6    GLU  CD   C          0.000      0.000      0.000
+   61 PROT 6    GLU  OE1  OC         0.000      0.000      0.000
+   62 PROT 6    GLU  OE2  OC         0.000      0.000      0.000
+   63 PROT 6    GLU  C    C          0.000      0.000      0.000
+   64 PROT 6    GLU  O    O          0.000      0.000      0.000
+   65 PROT 7    ASP  N    NH1        0.000      0.000      0.000
+   67 PROT 7    ASP  CA   CH1E       0.000      0.000      0.000
+   68 PROT 7    ASP  CB   CH2E       0.000      0.000      0.000
+   69 PROT 7    ASP  CG   C          0.000      0.000      0.000
+   70 PROT 7    ASP  OD1  OC         0.000      0.000      0.000
+   71 PROT 7    ASP  OD2  OC         0.000      0.000      0.000
+   72 PROT 7    ASP  C    C          0.000      0.000      0.000
+   73 PROT 7    ASP  O    O          0.000      0.000      0.000
+   74 PROT 8    ALA  N    NH1        0.000      0.000      0.000
+   76 PROT 8    ALA  CA   CH1E       0.000      0.000      0.000
+   77 PROT 8    ALA  CB   CH3E       0.000      0.000      0.000
+   78 PROT 8    ALA  C    C          0.000      0.000      0.000
+   79 PROT 8    ALA  O    O          0.000      0.000      0.000
+   80 PROT 9    ILE  N    NH1        0.000      0.000      0.000
+   82 PROT 9    ILE  CA   CH1E       0.000      0.000      0.000
+   83 PROT 9    ILE  CB   CH1E       0.000      0.000      0.000
+   84 PROT 9    ILE  CG2  CH3E       0.000      0.000      0.000
+   85 PROT 9    ILE  CG1  CH2E       0.000      0.000      0.000
+   86 PROT 9    ILE  CD   CH3E       0.000      0.000      0.000
+   87 PROT 9    ILE  C    C          0.000      0.000      0.000
+   88 PROT 9    ILE  O    O          0.000      0.000      0.000
+   89 PROT 10   ALA  N    NH1        0.000      0.000      0.000
+   91 PROT 10   ALA  CA   CH1E       0.000      0.000      0.000
+   92 PROT 10   ALA  CB   CH3E       0.000      0.000      0.000
+   93 PROT 10   ALA  C    C          0.000      0.000      0.000
+   94 PROT 10   ALA  O    O          0.000      0.000      0.000
+   95 PROT 11   GLU  N    NH1        0.000      0.000      0.000
+   97 PROT 11   GLU  CA   CH1E       0.000      0.000      0.000
+   98 PROT 11   GLU  CB   CH2E       0.000      0.000      0.000
+   99 PROT 11   GLU  CG   CH2E       0.000      0.000      0.000
+  100 PROT 11   GLU  CD   C          0.000      0.000      0.000
+  101 PROT 11   GLU  OE1  OC         0.000      0.000      0.000
+  102 PROT 11   GLU  OE2  OC         0.000      0.000      0.000
+  103 PROT 11   GLU  C    C          0.000      0.000      0.000
+  104 PROT 11   GLU  O    O          0.000      0.000      0.000
+  105 PROT 12   LEU  N    NH1        0.000      0.000      0.000
+  107 PROT 12   LEU  CA   CH1E       0.000      0.000      0.000
+  108 PROT 12   LEU  CB   CH2E       0.000      0.000      0.000
+  109 PROT 12   LEU  CG   CH1E       0.000      0.000      0.000
+  110 PROT 12   LEU  CD1  CH3E       0.000      0.000      0.000
+  111 PROT 12   LEU  CD2  CH3E       0.000      0.000      0.000
+  112 PROT 12   LEU  C    C          0.000      0.000      0.000
+  113 PROT 12   LEU  O    O          0.000      0.000      0.000
+  114 PROT 13   LYS  N    NH1        0.000      0.000      0.000
+  116 PROT 13   LYS  CA   CH1E       0.000      0.000      0.000
+  117 PROT 13   LYS  CB   CH2E       0.000      0.000      0.000
+  118 PROT 13   LYS  CG   CH2E       0.000      0.000      0.000
+  119 PROT 13   LYS  CD   CH2E       0.000      0.000      0.000
+  120 PROT 13   LYS  CE   CH2E       0.000      0.000      0.000
+  121 PROT 13   LYS  NZ   NH3        0.000      0.000      0.000
+  125 PROT 13   LYS  C    C          0.000      0.000      0.000
+  126 PROT 13   LYS  O    O          0.000      0.000      0.000
+  127 PROT 14   LYS  N    NH1        0.000      0.000      0.000
+  129 PROT 14   LYS  CA   CH1E       0.000      0.000      0.000
+  130 PROT 14   LYS  CB   CH2E       0.000      0.000      0.000
+  131 PROT 14   LYS  CG   CH2E       0.000      0.000      0.000
+  132 PROT 14   LYS  CD   CH2E       0.000      0.000      0.000
+  133 PROT 14   LYS  CE   CH2E       0.000      0.000      0.000
+  134 PROT 14   LYS  NZ   NH3        0.000      0.000      0.000
+  138 PROT 14   LYS  C    C          0.000      0.000      0.000
+  139 PROT 14   LYS  O    O          0.000      0.000      0.000
+  140 PROT 15   ALA  N    NH1        0.000      0.000      0.000
+  142 PROT 15   ALA  CA   CH1E       0.000      0.000      0.000
+  143 PROT 15   ALA  CB   CH3E       0.000      0.000      0.000
+  144 PROT 15   ALA  C    C          0.000      0.000      0.000
+  145 PROT 15   ALA  O    O          0.000      0.000      0.000
+  146 PROT 16   GLY  N    NH1        0.000      0.000      0.000
+  148 PROT 16   GLY  CA   CH2E       0.000      0.000      0.000
+  149 PROT 16   GLY  C    C          0.000      0.000      0.000
+  150 PROT 16   GLY  O    O          0.000      0.000      0.000
+  151 PROT 17   ILE  N    NH1        0.000      0.000      0.000
+  153 PROT 17   ILE  CA   CH1E       0.000      0.000      0.000
+  154 PROT 17   ILE  CB   CH1E       0.000      0.000      0.000
+  155 PROT 17   ILE  CG2  CH3E       0.000      0.000      0.000
+  156 PROT 17   ILE  CG1  CH2E       0.000      0.000      0.000
+  157 PROT 17   ILE  CD   CH3E       0.000      0.000      0.000
+  158 PROT 17   ILE  C    C          0.000      0.000      0.000
+  159 PROT 17   ILE  O    O          0.000      0.000      0.000
+  160 PROT 18   THR  N    NH1        0.000      0.000      0.000
+  162 PROT 18   THR  CA   CH1E       0.000      0.000      0.000
+  163 PROT 18   THR  CB   CH1E       0.000      0.000      0.000
+  164 PROT 18   THR  OG1  OH1        0.000      0.000      0.000
+  166 PROT 18   THR  CG2  CH3E       0.000      0.000      0.000
+  167 PROT 18   THR  C    C          0.000      0.000      0.000
+  168 PROT 18   THR  O    O          0.000      0.000      0.000
+  169 PROT 19   SER  N    NH1        0.000      0.000      0.000
+  171 PROT 19   SER  CA   CH1E       0.000      0.000      0.000
+  172 PROT 19   SER  CB   CH2E       0.000      0.000      0.000
+  173 PROT 19   SER  OG   OH1        0.000      0.000      0.000
+  175 PROT 19   SER  C    C          0.000      0.000      0.000
+  176 PROT 19   SER  O    O          0.000      0.000      0.000
+  177 PROT 20   ASP  N    NH1        0.000      0.000      0.000
+  179 PROT 20   ASP  CA   CH1E       0.000      0.000      0.000
+  180 PROT 20   ASP  CB   CH2E       0.000      0.000      0.000
+  181 PROT 20   ASP  CG   C          0.000      0.000      0.000
+  182 PROT 20   ASP  OD1  OC         0.000      0.000      0.000
+  183 PROT 20   ASP  OD2  OC         0.000      0.000      0.000
+  184 PROT 20   ASP  C    C          0.000      0.000      0.000
+  185 PROT 20   ASP  O    O          0.000      0.000      0.000
+  186 PROT 21   PHE  N    NH1        0.000      0.000      0.000
+  188 PROT 21   PHE  CA   CH1E       0.000      0.000      0.000
+  189 PROT 21   PHE  CB   CH2E       0.000      0.000      0.000
+  190 PROT 21   PHE  CG   CR         0.000      0.000      0.000
+  191 PROT 21   PHE  CD1  CR1E       0.000      0.000      0.000
+  192 PROT 21   PHE  CD2  CR1E       0.000      0.000      0.000
+  193 PROT 21   PHE  CE1  CR1E       0.000      0.000      0.000
+  194 PROT 21   PHE  CE2  CR1E       0.000      0.000      0.000
+  195 PROT 21   PHE  CZ   CR1E       0.000      0.000      0.000
+  196 PROT 21   PHE  C    C          0.000      0.000      0.000
+  197 PROT 21   PHE  O    O          0.000      0.000      0.000
+  198 PROT 22   TYR  N    NH1        0.000      0.000      0.000
+  200 PROT 22   TYR  CA   CH1E       0.000      0.000      0.000
+  201 PROT 22   TYR  CB   CH2E       0.000      0.000      0.000
+  202 PROT 22   TYR  CG   CR         0.000      0.000      0.000
+  203 PROT 22   TYR  CD1  CR1E       0.000      0.000      0.000
+  204 PROT 22   TYR  CE1  CR1E       0.000      0.000      0.000
+  205 PROT 22   TYR  CD2  CR1E       0.000      0.000      0.000
+  206 PROT 22   TYR  CE2  CR1E       0.000      0.000      0.000
+  207 PROT 22   TYR  CZ   C          0.000      0.000      0.000
+  208 PROT 22   TYR  OH   OH1        0.000      0.000      0.000
+  210 PROT 22   TYR  C    C          0.000      0.000      0.000
+  211 PROT 22   TYR  O    O          0.000      0.000      0.000
+  212 PROT 23   PHE  N    NH1        0.000      0.000      0.000
+  214 PROT 23   PHE  CA   CH1E       0.000      0.000      0.000
+  215 PROT 23   PHE  CB   CH2E       0.000      0.000      0.000
+  216 PROT 23   PHE  CG   CR         0.000      0.000      0.000
+  217 PROT 23   PHE  CD1  CR1E       0.000      0.000      0.000
+  218 PROT 23   PHE  CD2  CR1E       0.000      0.000      0.000
+  219 PROT 23   PHE  CE1  CR1E       0.000      0.000      0.000
+  220 PROT 23   PHE  CE2  CR1E       0.000      0.000      0.000
+  221 PROT 23   PHE  CZ   CR1E       0.000      0.000      0.000
+  222 PROT 23   PHE  C    C          0.000      0.000      0.000
+  223 PROT 23   PHE  O    O          0.000      0.000      0.000
+  224 PROT 24   ASN  N    NH1        0.000      0.000      0.000
+  226 PROT 24   ASN  CA   CH1E       0.000      0.000      0.000
+  227 PROT 24   ASN  CB   CH2E       0.000      0.000      0.000
+  228 PROT 24   ASN  CG   C          0.000      0.000      0.000
+  229 PROT 24   ASN  OD1  O          0.000      0.000      0.000
+  230 PROT 24   ASN  ND2  NH2        0.000      0.000      0.000
+  233 PROT 24   ASN  C    C          0.000      0.000      0.000
+  234 PROT 24   ASN  O    O          0.000      0.000      0.000
+  235 PROT 25   ALA  N    NH1        0.000      0.000      0.000
+  237 PROT 25   ALA  CA   CH1E       0.000      0.000      0.000
+  238 PROT 25   ALA  CB   CH3E       0.000      0.000      0.000
+  239 PROT 25   ALA  C    C          0.000      0.000      0.000
+  240 PROT 25   ALA  O    O          0.000      0.000      0.000
+  241 PROT 26   ILE  N    NH1        0.000      0.000      0.000
+  243 PROT 26   ILE  CA   CH1E       0.000      0.000      0.000
+  244 PROT 26   ILE  CB   CH1E       0.000      0.000      0.000
+  245 PROT 26   ILE  CG2  CH3E       0.000      0.000      0.000
+  246 PROT 26   ILE  CG1  CH2E       0.000      0.000      0.000
+  247 PROT 26   ILE  CD   CH3E       0.000      0.000      0.000
+  248 PROT 26   ILE  C    C          0.000      0.000      0.000
+  249 PROT 26   ILE  O    O          0.000      0.000      0.000
+  250 PROT 27   ASN  N    NH1        0.000      0.000      0.000
+  252 PROT 27   ASN  CA   CH1E       0.000      0.000      0.000
+  253 PROT 27   ASN  CB   CH2E       0.000      0.000      0.000
+  254 PROT 27   ASN  CG   C          0.000      0.000      0.000
+  255 PROT 27   ASN  OD1  O          0.000      0.000      0.000
+  256 PROT 27   ASN  ND2  NH2        0.000      0.000      0.000
+  259 PROT 27   ASN  C    C          0.000      0.000      0.000
+  260 PROT 27   ASN  O    O          0.000      0.000      0.000
+  261 PROT 28   LYS  N    NH1        0.000      0.000      0.000
+  263 PROT 28   LYS  CA   CH1E       0.000      0.000      0.000
+  264 PROT 28   LYS  CB   CH2E       0.000      0.000      0.000
+  265 PROT 28   LYS  CG   CH2E       0.000      0.000      0.000
+  266 PROT 28   LYS  CD   CH2E       0.000      0.000      0.000
+  267 PROT 28   LYS  CE   CH2E       0.000      0.000      0.000
+  268 PROT 28   LYS  NZ   NH3        0.000      0.000      0.000
+  272 PROT 28   LYS  C    C          0.000      0.000      0.000
+  273 PROT 28   LYS  O    O          0.000      0.000      0.000
+  274 PROT 29   ALA  N    NH1        0.000      0.000      0.000
+  276 PROT 29   ALA  CA   CH1E       0.000      0.000      0.000
+  277 PROT 29   ALA  CB   CH3E       0.000      0.000      0.000
+  278 PROT 29   ALA  C    C          0.000      0.000      0.000
+  279 PROT 29   ALA  O    O          0.000      0.000      0.000
+  280 PROT 30   LYS  N    NH1        0.000      0.000      0.000
+  282 PROT 30   LYS  CA   CH1E       0.000      0.000      0.000
+  283 PROT 30   LYS  CB   CH2E       0.000      0.000      0.000
+  284 PROT 30   LYS  CG   CH2E       0.000      0.000      0.000
+  285 PROT 30   LYS  CD   CH2E       0.000      0.000      0.000
+  286 PROT 30   LYS  CE   CH2E       0.000      0.000      0.000
+  287 PROT 30   LYS  NZ   NH3        0.000      0.000      0.000
+  291 PROT 30   LYS  C    C          0.000      0.000      0.000
+  292 PROT 30   LYS  O    O          0.000      0.000      0.000
+  293 PROT 31   THR  N    NH1        0.000      0.000      0.000
+  295 PROT 31   THR  CA   CH1E       0.000      0.000      0.000
+  296 PROT 31   THR  CB   CH1E       0.000      0.000      0.000
+  297 PROT 31   THR  OG1  OH1        0.000      0.000      0.000
+  299 PROT 31   THR  CG2  CH3E       0.000      0.000      0.000
+  300 PROT 31   THR  C    C          0.000      0.000      0.000
+  301 PROT 31   THR  O    O          0.000      0.000      0.000
+  302 PROT 32   VAL  N    NH1        0.000      0.000      0.000
+  304 PROT 32   VAL  CA   CH1E       0.000      0.000      0.000
+  305 PROT 32   VAL  CB   CH1E       0.000      0.000      0.000
+  306 PROT 32   VAL  CG1  CH3E       0.000      0.000      0.000
+  307 PROT 32   VAL  CG2  CH3E       0.000      0.000      0.000
+  308 PROT 32   VAL  C    C          0.000      0.000      0.000
+  309 PROT 32   VAL  O    O          0.000      0.000      0.000
+  310 PROT 33   GLU  N    NH1        0.000      0.000      0.000
+  312 PROT 33   GLU  CA   CH1E       0.000      0.000      0.000
+  313 PROT 33   GLU  CB   CH2E       0.000      0.000      0.000
+  314 PROT 33   GLU  CG   CH2E       0.000      0.000      0.000
+  315 PROT 33   GLU  CD   C          0.000      0.000      0.000
+  316 PROT 33   GLU  OE1  OC         0.000      0.000      0.000
+  317 PROT 33   GLU  OE2  OC         0.000      0.000      0.000
+  318 PROT 33   GLU  C    C          0.000      0.000      0.000
+  319 PROT 33   GLU  O    O          0.000      0.000      0.000
+  320 PROT 34   GLU  N    NH1        0.000      0.000      0.000
+  322 PROT 34   GLU  CA   CH1E       0.000      0.000      0.000
+  323 PROT 34   GLU  CB   CH2E       0.000      0.000      0.000
+  324 PROT 34   GLU  CG   CH2E       0.000      0.000      0.000
+  325 PROT 34   GLU  CD   C          0.000      0.000      0.000
+  326 PROT 34   GLU  OE1  OC         0.000      0.000      0.000
+  327 PROT 34   GLU  OE2  OC         0.000      0.000      0.000
+  328 PROT 34   GLU  C    C          0.000      0.000      0.000
+  329 PROT 34   GLU  O    O          0.000      0.000      0.000
+  330 PROT 35   VAL  N    NH1        0.000      0.000      0.000
+  332 PROT 35   VAL  CA   CH1E       0.000      0.000      0.000
+  333 PROT 35   VAL  CB   CH1E       0.000      0.000      0.000
+  334 PROT 35   VAL  CG1  CH3E       0.000      0.000      0.000
+  335 PROT 35   VAL  CG2  CH3E       0.000      0.000      0.000
+  336 PROT 35   VAL  C    C          0.000      0.000      0.000
+  337 PROT 35   VAL  O    O          0.000      0.000      0.000
+  338 PROT 36   ASN  N    NH1        0.000      0.000      0.000
+  340 PROT 36   ASN  CA   CH1E       0.000      0.000      0.000
+  341 PROT 36   ASN  CB   CH2E       0.000      0.000      0.000
+  342 PROT 36   ASN  CG   C          0.000      0.000      0.000
+  343 PROT 36   ASN  OD1  O          0.000      0.000      0.000
+  344 PROT 36   ASN  ND2  NH2        0.000      0.000      0.000
+  347 PROT 36   ASN  C    C          0.000      0.000      0.000
+  348 PROT 36   ASN  O    O          0.000      0.000      0.000
+  349 PROT 37   ALA  N    NH1        0.000      0.000      0.000
+  351 PROT 37   ALA  CA   CH1E       0.000      0.000      0.000
+  352 PROT 37   ALA  CB   CH3E       0.000      0.000      0.000
+  353 PROT 37   ALA  C    C          0.000      0.000      0.000
+  354 PROT 37   ALA  O    O          0.000      0.000      0.000
+  355 PROT 38   LEU  N    NH1        0.000      0.000      0.000
+  357 PROT 38   LEU  CA   CH1E       0.000      0.000      0.000
+  358 PROT 38   LEU  CB   CH2E       0.000      0.000      0.000
+  359 PROT 38   LEU  CG   CH1E       0.000      0.000      0.000
+  360 PROT 38   LEU  CD1  CH3E       0.000      0.000      0.000
+  361 PROT 38   LEU  CD2  CH3E       0.000      0.000      0.000
+  362 PROT 38   LEU  C    C          0.000      0.000      0.000
+  363 PROT 38   LEU  O    O          0.000      0.000      0.000
+  364 PROT 39   LYS  N    NH1        0.000      0.000      0.000
+  366 PROT 39   LYS  CA   CH1E       0.000      0.000      0.000
+  367 PROT 39   LYS  CB   CH2E       0.000      0.000      0.000
+  368 PROT 39   LYS  CG   CH2E       0.000      0.000      0.000
+  369 PROT 39   LYS  CD   CH2E       0.000      0.000      0.000
+  370 PROT 39   LYS  CE   CH2E       0.000      0.000      0.000
+  371 PROT 39   LYS  NZ   NH3        0.000      0.000      0.000
+  375 PROT 39   LYS  C    C          0.000      0.000      0.000
+  376 PROT 39   LYS  O    O          0.000      0.000      0.000
+  377 PROT 40   ASN  N    NH1        0.000      0.000      0.000
+  379 PROT 40   ASN  CA   CH1E       0.000      0.000      0.000
+  380 PROT 40   ASN  CB   CH2E       0.000      0.000      0.000
+  381 PROT 40   ASN  CG   C          0.000      0.000      0.000
+  382 PROT 40   ASN  OD1  O          0.000      0.000      0.000
+  383 PROT 40   ASN  ND2  NH2        0.000      0.000      0.000
+  386 PROT 40   ASN  C    C          0.000      0.000      0.000
+  387 PROT 40   ASN  O    O          0.000      0.000      0.000
+  388 PROT 41   GLU  N    NH1        0.000      0.000      0.000
+  390 PROT 41   GLU  CA   CH1E       0.000      0.000      0.000
+  391 PROT 41   GLU  CB   CH2E       0.000      0.000      0.000
+  392 PROT 41   GLU  CG   CH2E       0.000      0.000      0.000
+  393 PROT 41   GLU  CD   C          0.000      0.000      0.000
+  394 PROT 41   GLU  OE1  OC         0.000      0.000      0.000
+  395 PROT 41   GLU  OE2  OC         0.000      0.000      0.000
+  396 PROT 41   GLU  C    C          0.000      0.000      0.000
+  397 PROT 41   GLU  O    O          0.000      0.000      0.000
+  398 PROT 42   ILE  N    NH1        0.000      0.000      0.000
+  400 PROT 42   ILE  CA   CH1E       0.000      0.000      0.000
+  401 PROT 42   ILE  CB   CH1E       0.000      0.000      0.000
+  402 PROT 42   ILE  CG2  CH3E       0.000      0.000      0.000
+  403 PROT 42   ILE  CG1  CH2E       0.000      0.000      0.000
+  404 PROT 42   ILE  CD   CH3E       0.000      0.000      0.000
+  405 PROT 42   ILE  C    C          0.000      0.000      0.000
+  406 PROT 42   ILE  O    O          0.000      0.000      0.000
+  407 PROT 43   LEU  N    NH1        0.000      0.000      0.000
+  409 PROT 43   LEU  CA   CH1E       0.000      0.000      0.000
+  410 PROT 43   LEU  CB   CH2E       0.000      0.000      0.000
+  411 PROT 43   LEU  CG   CH1E       0.000      0.000      0.000
+  412 PROT 43   LEU  CD1  CH3E       0.000      0.000      0.000
+  413 PROT 43   LEU  CD2  CH3E       0.000      0.000      0.000
+  414 PROT 43   LEU  C    C          0.000      0.000      0.000
+  415 PROT 43   LEU  O    O          0.000      0.000      0.000
+  416 PROT 44   LYS  N    NH1        0.000      0.000      0.000
+  418 PROT 44   LYS  CA   CH1E       0.000      0.000      0.000
+  419 PROT 44   LYS  CB   CH2E       0.000      0.000      0.000
+  420 PROT 44   LYS  CG   CH2E       0.000      0.000      0.000
+  421 PROT 44   LYS  CD   CH2E       0.000      0.000      0.000
+  422 PROT 44   LYS  CE   CH2E       0.000      0.000      0.000
+  423 PROT 44   LYS  NZ   NH3        0.000      0.000      0.000
+  427 PROT 44   LYS  C    C          0.000      0.000      0.000
+  428 PROT 44   LYS  O    O          0.000      0.000      0.000
+  429 PROT 45   ALA  N    NH1        0.000      0.000      0.000
+  431 PROT 45   ALA  CA   CH1E       0.000      0.000      0.000
+  432 PROT 45   ALA  CB   CH3E       0.000      0.000      0.000
+  433 PROT 45   ALA  C    C          0.000      0.000      0.000
+  434 PROT 45   ALA  O    O          0.000      0.000      0.000
+  435 PROT 46   HIS  N    NH1        0.000      0.000      0.000
+  437 PROT 46   HIS  CA   CH1E       0.000      0.000      0.000
+  438 PROT 46   HIS  CB   CH2E       0.000      0.000      0.000
+  439 PROT 46   HIS  CG   CR         0.000      0.000      0.000
+  440 PROT 46   HIS  ND1  NH1        0.000      0.000      0.000
+  442 PROT 46   HIS  CD2  CR1E       0.000      0.000      0.000
+  443 PROT 46   HIS  NE2  NR         0.000      0.000      0.000
+  444 PROT 46   HIS  CE1  CR1E       0.000      0.000      0.000
+  445 PROT 46   HIS  C    C          0.000      0.000      0.000
+  446 PROT 46   HIS  O    O          0.000      0.000      0.000
+  447 PROT 47   ALA  N    NH1        0.000      0.000      0.000
+  449 PROT 47   ALA  CA   CH1E       0.000      0.000      0.000
+  450 PROT 47   ALA  CB   CH3E       0.000      0.000      0.000
+  451 PROT 47   ALA  C    C          0.000      0.000      0.000
+  452 PROT 47   ALA  OT1  OC         0.000      0.000      0.000
+  453 PROT 47   ALA  OT2  OC         0.000      0.000      0.000
+SLVPRINT> TOTAL ALIPHATIC :           0.000 Kcal/mol
+SLVPRINT> TOTAL AROMATIC  :           0.000 Kcal/mol
+SLVPRINT> TOTAL POLAR     :           0.000 Kcal/mol
+SLVPRINT> ENTHALPY (ALIPHATIC,AROMATIC,POLAR)          0.000 (          0.000          0.000          0.000 )
+SLVPRINT>       CP (ALIPHATIC,AROMATIC,POLAR)          0.000 (          0.000          0.000          0.000 )
+  
+ CHARMM>     
+  
+ CHARMM>    ! required for lazaridis parameters to be valid
+ CHARMM>    nbonds elec  switch  group  rdie vdw  vswitch vgroup -
+ CHARMM>           cutnb 13.0 ctofnb 9.0 ctonnb 7.0 -
+ CHARMM>           wmin 1.2 eps 1.0 e14f 0.4 nbxm 5
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      GROUps   RDIElec  SWITch   VGROup   VSWItch 
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 13.000 CTEXNB =999.000 CTONNB =  7.000 CTOFNB =  9.000
+ WMIN   =  1.200 WRNMXD =  0.500 E14FAC =  0.400 EPS    =  1.000
+ NBXMOD =      5
+ There are    29449 atom  pairs and     1914 atom  exclusions.
+ There are        0 group pairs and      454 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   102379 ATOM PAIRS AND    15664 GROUP PAIRS
+
+ General group nonbond list generation found:
+     8361 GROUP PAIRS WERE FOUND FOR GROUP LIST
+     7215 GROUP PAIRS WERE BEYOND CUTOFFS
+        0 GROUP PAIRS WERE NOT SELECTED
+  
+ CHARMM>     
+  
+ CHARMM>    shake bonh param tol 1e-7
+ SHKCOM> SHAKE parameters: TOL =   0.1000E-06 MXITer =    500
+
+              88 constraints will held by SHAKE.
+  
+ CHARMM>     
+  
+ CHARMM>    mini sd nstep 400
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      GROUps   RDIElec  SWITch   VGROup   VSWItch 
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 13.000 CTEXNB =999.000 CTONNB =  7.000 CTOFNB =  9.000
+ WMIN   =  1.200 WRNMXD =  0.500 E14FAC =  0.400 EPS    =  1.000
+ NBXMOD =      5
+ There are    29449 atom  pairs and     1914 atom  exclusions.
+ There are     8361 group pairs and      454 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   102379 ATOM PAIRS AND    15664 GROUP PAIRS
+
+ General group nonbond list generation found:
+     8361 GROUP PAIRS WERE FOUND FOR GROUP LIST
+     7215 GROUP PAIRS WERE BEYOND CUTOFFS
+        0 GROUP PAIRS WERE NOT SELECTED
+
+
+ STEEPD> An energy minimization has been requested.
+
+ NSTEP  =          400   NPRINT =           10
+ STEP   =    0.0200000   TOLFUN =    0.0000000
+ TOLGRD =    0.0000000   TOLSTP =    0.0000000
+
+MINI MIN: Cycle      ENERgy      Delta-E         GRMS    Step-size
+MINI INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+MINI EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>        0   1606.64079      0.00000    153.39552      0.02000
+MINI INTERN>       73.38326     24.95198      0.00000    106.62829      0.08877
+MINI EXTERN>     1997.21579   -595.62729      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       10   -338.61882   1945.25961     13.95940      0.00896
+MINI INTERN>       61.72653     57.02829      0.00000     98.01239     14.97328
+MINI EXTERN>       21.34110   -591.70041      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       20   -487.20379    148.58497      2.65352      0.00401
+MINI INTERN>       18.15882     47.05368      0.00000     93.47891     13.91674
+MINI EXTERN>      -66.47072   -593.34122      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       30   -538.01266     50.80887      7.00171      0.00431
+MINI INTERN>       24.95379     45.14139      0.00000     90.05654     12.99181
+MINI EXTERN>     -116.16855   -594.98764      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       40   -572.55944     34.54679      6.82615      0.00464
+MINI INTERN>       22.42410     43.65966      0.00000     87.60346     12.26969
+MINI EXTERN>     -142.27084   -596.24551      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       50   -609.42871     36.86927      1.77557      0.00208
+MINI INTERN>       10.33424     42.15721      0.00000     85.19961     11.62433
+MINI EXTERN>     -161.46377   -597.28033      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       60   -628.52918     19.10047      3.23737      0.00223
+MINI INTERN>       10.74887     41.49366      0.00000     82.97159     11.25281
+MINI EXTERN>     -176.38634   -598.60978      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       70   -643.79662     15.26744      3.44550      0.00240
+MINI INTERN>       10.37542     40.78693      0.00000     81.07595     10.98561
+MINI EXTERN>     -187.17716   -599.84337      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       80   -656.80275     13.00613      3.71707      0.00258
+MINI INTERN>       10.30698     40.20429      0.00000     79.26142     10.76500
+MINI EXTERN>     -196.24890   -601.09155      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>       90   -668.52733     11.72458      4.00099      0.00277
+MINI INTERN>       10.37072     39.69703      0.00000     77.49031     10.56099
+MINI EXTERN>     -204.23255   -602.41384      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      100   -682.15048     13.62315      0.96458      0.00124
+MINI INTERN>        7.46454     38.09813      0.00000     76.10254     10.34553
+MINI EXTERN>     -210.40611   -603.75511      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      110   -691.36873      9.21825      1.41460      0.00133
+MINI INTERN>        7.50446     37.69056      0.00000     74.61851     10.16312
+MINI EXTERN>     -216.25741   -605.08798      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      120   -699.49214      8.12341      1.36852      0.00144
+MINI INTERN>        7.28146     37.37391      0.00000     73.28364     10.01761
+MINI EXTERN>     -221.13354   -606.31522      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      130   -705.65681      6.16467      2.55990      0.00154
+MINI INTERN>        8.23791     37.08623      0.00000     72.07316      9.88484
+MINI EXTERN>     -225.38996   -607.54900      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      140   -712.23211      6.57530      2.53929      0.00166
+MINI INTERN>        8.00179     36.96258      0.00000     70.90747      9.76236
+MINI EXTERN>     -229.11558   -608.75074      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      150   -717.92209      5.68998      2.58228      0.00178
+MINI INTERN>        8.14706     36.67194      0.00000     69.85075      9.66534
+MINI EXTERN>     -232.36792   -609.88927      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      160   -725.05524      7.13315      0.92411      0.00080
+MINI INTERN>        6.42478     36.65103      0.00000     68.65772      9.63453
+MINI EXTERN>     -235.52676   -610.89654      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      170   -729.80643      4.75118      0.72491      0.00086
+MINI INTERN>        6.31980     36.48143      0.00000     67.74182      9.56205
+MINI EXTERN>     -238.00338   -611.90813      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      180   -734.57678      4.77035      0.89383      0.00092
+MINI INTERN>        6.29005     36.38842      0.00000     66.74203      9.50455
+MINI EXTERN>     -240.52405   -612.97778      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      190   -738.80483      4.22806      1.13900      0.00099
+MINI INTERN>        6.28406     36.37908      0.00000     65.80636      9.45694
+MINI EXTERN>     -242.74942   -613.98186      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      200   -742.54999      3.74516      1.71758      0.00107
+MINI INTERN>        6.50081     36.42047      0.00000     64.89587      9.41470
+MINI EXTERN>     -244.81028   -614.97157      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      210   -746.19834      3.64835      1.65869      0.00115
+MINI INTERN>        6.44363     36.32273      0.00000     64.08626      9.38354
+MINI EXTERN>     -246.59402   -615.84049      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      220   -749.67637      3.47804      1.75227      0.00123
+MINI INTERN>        6.43941     36.31983      0.00000     63.27873      9.34064
+MINI EXTERN>     -248.28725   -616.76773      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      230   -752.78497      3.10860      1.98513      0.00132
+MINI INTERN>        6.55517     36.32978      0.00000     62.50224      9.31127
+MINI EXTERN>     -249.85411   -617.62931      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      240   -756.76231      3.97734      0.64218      0.00059
+MINI INTERN>        6.12927     35.81144      0.00000     61.85634      9.22397
+MINI EXTERN>     -251.20668   -618.57665      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      250   -759.65909      2.89678      0.55321      0.00064
+MINI INTERN>        6.06605     35.77887      0.00000     61.16634      9.19746
+MINI EXTERN>     -252.50759   -619.36021      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      260   -762.65308      2.99400      0.90553      0.00069
+MINI INTERN>        6.22578     35.67981      0.00000     60.43127      9.15078
+MINI EXTERN>     -253.86550   -620.27523      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      270   -765.41152      2.75843      0.79035      0.00074
+MINI INTERN>        6.15569     35.63251      0.00000     59.76028      9.12733
+MINI EXTERN>     -255.04480   -621.04253      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      280   -767.89195      2.48044      1.15505      0.00079
+MINI INTERN>        6.35158     35.55480      0.00000     59.11475      9.08861
+MINI EXTERN>     -256.15203   -621.84968      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      290   -770.32293      2.43098      1.31461      0.00085
+MINI INTERN>        6.42831     35.53265      0.00000     58.48031      9.05524
+MINI EXTERN>     -257.18984   -622.62960      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      300   -772.67434      2.35140      1.32053      0.00092
+MINI INTERN>        6.41863     35.49574      0.00000     57.87568      9.03003
+MINI EXTERN>     -258.14511   -623.34931      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      310   -774.93186      2.25752      1.39972      0.00098
+MINI INTERN>        6.47111     35.42170      0.00000     57.27762      9.00853
+MINI EXTERN>     -259.06366   -624.04717      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      320   -776.97224      2.04038      1.58743      0.00106
+MINI INTERN>        6.60139     35.37943      0.00000     56.70926      8.98024
+MINI EXTERN>     -259.89976   -624.74280      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      330   -778.95378      1.98154      1.77512      0.00114
+MINI INTERN>        6.69216     35.42160      0.00000     56.13984      8.94669
+MINI EXTERN>     -260.69117   -625.46289      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      340   -781.56538      2.61161      0.43705      0.00051
+MINI INTERN>        5.86097     35.48069      0.00000     55.55244      8.97538
+MINI EXTERN>     -261.48946   -625.94539      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      350   -783.52825      1.96286      0.45303      0.00055
+MINI INTERN>        5.84565     35.45810      0.00000     55.00572      8.95488
+MINI EXTERN>     -262.21003   -626.58256      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      360   -785.47585      1.94760      0.58597      0.00059
+MINI INTERN>        5.84002     35.45321      0.00000     54.44197      8.93773
+MINI EXTERN>     -262.92631   -627.22247      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      370   -787.26450      1.78866      0.70347      0.00063
+MINI INTERN>        5.82650     35.47637      0.00000     53.91269      8.91957
+MINI EXTERN>     -263.57076   -627.82887      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      380   -788.90159      1.63708      1.06728      0.00068
+MINI INTERN>        5.89525     35.52878      0.00000     53.38525      8.90363
+MINI EXTERN>     -264.19153   -628.42296      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      390   -790.51278      1.61119      1.15746      0.00073
+MINI INTERN>        5.92362     35.50503      0.00000     52.88942      8.89332
+MINI EXTERN>     -264.77087   -628.95329      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+MINI>      400   -792.09968      1.58690      1.22035      0.00079
+MINI INTERN>        5.97117     35.43039      0.00000     52.42609      8.86792
+MINI EXTERN>     -265.28968   -629.50557      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+ STEEPD> Minimization exiting with number of steps limit (       400) exceeded.
+
+STPD MIN: Cycle      ENERgy      Delta-E         GRMS    Step-size
+STPD INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+STPD EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+STPD>      400   -792.09968      1.58690      1.22035      0.00094
+STPD INTERN>        5.97117     35.43039      0.00000     52.42609      8.86792
+STPD EXTERN>     -265.28968   -629.50557      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>    open unit 11 write card name -
+ CHARMM>    "ga_polarh_wt_min.pdb"
+ VOPEN> Attempting to open::ga_polarh_wt_min.pdb::
+ OPNLGU> Unit 11 opened for WRITE access to ga_polarh_wt_min.pdb
+  
+ CHARMM>    coor write pdb unit 11
+ RDTITL>  
+ RDTITL> No title read.
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+ VCLOSE: Closing unit   11 with status "KEEP"
+$$$$$$  New timer profile $$$$$
+   Shake Setup             0.00064 Other:    0.00000
+      Shake time              0.01844 Other:    0.00000
+   Dynamics total          0.01844 Other:    0.00000
+      Nonbond force           2.75285 Other:    0.00000
+         Bond energy             0.01304 Other:    0.00000
+         Angle energy            0.10576 Other:    0.00000
+         Dihedral energy         0.06009 Other:    0.00000
+         Restraints energy       0.00060 Other:    0.00000
+      INTRNL energy           0.19450 Other:    0.01502
+      Comm force              0.00800 Other:    0.00000
+   Energy time             2.96742 Other:    0.01206
+ Total time              3.53159 Other:    0.54509
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MAXIMUM STACK SPACE USED IS   78024
+                    STACK CURRENTLY IN USE IS         0
+                    MOST SEVERE WARNING WAS AT LEVEL  0
+                    HEAP PRINTOUT-  HEAP SIZE  10240000
+                    SPACE CURRENTLY IN USE IS      4278
+                    MAXIMUM SPACE USED IS        157550
+                    FREE LIST
+            PRINHP> ADDRESS:         1 LENGTH:  10220800 NEXT:  10224625
+            PRINHP> ADDRESS:  10224625 LENGTH:     14922 NEXT:         0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     3.56  SECONDS 
+                         CPU TIME:     3.32  SECONDS 

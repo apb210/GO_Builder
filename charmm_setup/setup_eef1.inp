@@ -1,0 +1,71 @@
+* set up protein in EEF1 ff
+*
+
+! global run variables
+set nter "nter"
+set cter "cter"
+set fileroot "ga"
+set usedir 1
+
+bomlev -1
+set segid PROT
+set this minim
+
+! Topology file
+open unit 3 read card name -
+"toph19_eef1.inp"
+read rtf card unit 3
+close unit 3
+
+! Parameter file
+open unit 3 read card name -
+"param19_eef1.inp"
+read para card unit 3
+close unit 3
+
+open unit 10 read card name -
+"1prb_7-53_charmm19.pdb"
+read sequence pdb unit 10
+generate @SEGID first nter last CTER setup
+read coor pdb unit 10
+close unit 10
+
+ic fill preserve
+ic purge
+ic para
+ic print
+coor init sele all end
+ic seed 1 n 1 ca 1 c
+ic build
+
+open unit 11 write card name -
+"ga_polarh_wt.pdb"
+coor write pdb unit 11
+close unit 11
+
+open unit 11 write card name -
+"ga_polarh_wt.psf"
+write psf card unit 11
+close unit 11
+
+faster on 
+
+eef1 setup temp 298 unit 95 name "ffield/water/solvpar.inp"
+update ctonnb 7.0 ctofnb 9.0 cutnb 10.0
+
+eef1 print
+
+! required for lazaridis parameters to be valid
+nbonds elec  switch  group  rdie vdw  vswitch vgroup - 
+       cutnb 13.0 ctofnb 9.0 ctonnb 7.0 -
+       wmin 1.2 eps 1.0 e14f 0.4 nbxm 5 
+
+shake bonh param tol 1e-7
+
+mini sd nstep 400
+
+open unit 11 write card name -
+"ga_polarh_wt_min.pdb"
+coor write pdb unit 11
+
+stop

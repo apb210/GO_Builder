@@ -1,0 +1,15 @@
+=========================================================
+This go model generated with the command:
+"go_builder.py --gmx -k rnatest -p /home/rbb24/projects/hairpins/data/pdb/pdb2nue_rna_chopH.pdb"
+Building go model from PDB file /home/rbb24/projects/hairpins/data/pdb/pdb2nue_rna_chopH.pdb
+Target folding temperatures =  350.000  K
+Key for naming output files = rnatest
+Number of NC-linked repeats = 1
+Non-go weighting ('gamma') =    0.000
+Default non-go contact distance =    5.500
+Scaling side-chain contacts by    1.000
+Scaling backbone contacts by    1.000
+Writing GROMACS files
+Will build model from single structure
+Base for output file names = go_rnatest/go_rnatest
+=========================================================

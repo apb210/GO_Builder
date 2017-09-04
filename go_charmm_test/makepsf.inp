@@ -1,0 +1,19 @@
+* make psf from Go model
+* 
+
+stream "../go_ga_tf350.0/go_ga_tf350.0_top.inp"
+stream "../go_ga_tf350.0/go_ga_tf350.0_parm.inp"
+stream "../go_ga_tf350.0/go_ga_tf350.0_seq.inp"
+
+open unit 10 read card name -
+"../go_ga_tf350.0/go_ga_tf350.0_linear.pdb"
+coor read pdb unit 10
+close unit 10
+
+open unit 20 write card name -
+"go_ga.psf"
+write psf card unit 20
+close unit 20
+
+stop
+

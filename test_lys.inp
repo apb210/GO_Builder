@@ -1,0 +1,21 @@
+* lysozyme test
+*
+
+stream  go_lys_tf350.0/go_lys_tf350.0_top.inp
+stream  go_lys_tf350.0/go_lys_tf350.0_parm.inp
+stream  go_lys_tf350.0/go_lys_tf350.0_seq.inp
+
+open unit 10 read card name go_lys_tf350.0/go_lys_tf350.0.pdb
+coor read pdb unit 10 resi
+close unit 10
+
+eten on 
+
+shake bond
+
+energy
+
+open unit 20 write card name go_lys.psf
+write psf card unit 20
+
+stop

@@ -1,0 +1,41 @@
+* quick run of Go model
+* 
+
+set this "quick"
+set t 300.0
+! pass segment (s) and temp (t) on command line
+stream "../go_ga_tf350.0/go_ga_tf350.0_top.inp"
+stream "../go_ga_tf350.0/go_ga_tf350.0_parm.inp"
+stream "../go_ga_tf350.0/go_ga_tf350.0_seq.inp"
+
+open unit 10 read card name -
+"../go_ga_tf350.0/go_ga_tf350.0_linear.pdb"
+coor read pdb unit 10
+close unit 10
+
+! karanicolas 12-10-6
+eten on 
+
+! cutoffs for speed
+nbonds nbxmod 3 atom noelec vatom vswitch -
+  cutnb 30.0 ctofnb 27.5 ctonnb 25.0 wmin 1.5
+
+faster on
+
+shake bond
+
+scalar fbeta set 0.2
+
+open unit 20 write card name "@THIS.restart"
+open unit 21 write file name "@THIS.dcd"
+open unit 22 write card name "@THIS.ene"
+dynamics leap langevin start nstep 100000 timestep 0.0075 -
+    iprfrq 10000 ihtfrq 0 ieqfrq 0 ntrfrq 10000  -
+    iunrea -1 iunwri 20 iuncrd 21 iunvel -1 kunit 22 -
+    nprint 1000 nsavc 1000 nsavv 0 ihbfrq 0 inbfrq 25  -
+    ilbfrq 1000 rbuffer 0.0 tbath @T -
+    firstt @T finalt @T teminc 0.0   -
+    iasors 0 iasvel 1 iscvel 0 ichecw 1 twindh 10.0 twindl -10.0
+
+stop
+

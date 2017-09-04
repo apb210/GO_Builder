@@ -1,0 +1,81 @@
+Jan 18, 2012: Jeetain Mittal (Lehigh University)
+-- To create a coarse-grained model with intra-go and inter-kh interactions, 
+use the following command:
+
+./go_builder.py -k 1q0w --gmx -p --bind-n-go 1q0w_edit.pdb
+
+This will create several files but the important files for our purpose are:
+
+--> go_*_gromacs_intragorepkh.top - This is for native intra-go, non-native 
+intra-repulsive, and inter-kh. This is what we wanted to do in Bind'nGo.
+
+--> go_*.gro - The coordinate file in gromacs format.
+
+--> go_*_qlist.dat - List of native contacts. Will be used to constraint 
+Q. One needs to split intra vs inter native contacts. Inter-native contacts 
+are not generated with option --bind-n-go. Also, one needs to create a file 
+that can be used to constraint individual protein domains along Q or dRMS. 
+For more information see Example directory. Also, need to change the distance 
+units to nm instead of Angstrom as output by GoBuilder.
+
+REMEMBER: Special gromacs version is needed so that Karanicolas-Brooks 
+interaction potential can be used on gromacs.
+
+*****************************************************************************
+Examples of the Karanicolas-Brooks CHARMM go-model use.
+CHARMM with the Go-model code is needed to run the examples.
+
+charmm_setup: 	This directory has an example of setting up a protein
+		with CHARMM to build hydrogens so the Go model script
+		can work. Alternatively hydrogens could be build with
+		any other program.
+
+go_build_dimer.py		} These files all relate to the building
+go_builder.py			} of go-models and have their own 
+go_lib.py			} command-line help
+karanicolas_dihe_parm.dat	}
+miyazawa_jernigan.dat		}
+
+setup_go.csh	: this will invoke the above scripts to build an example
+		go model - just an example of usage
+
+go_charmm_test	: in this directory are some CHARMM test cases which use
+		the go model built by the setup_go.csh script. One case
+		will simply write a psf file, the other does a short
+		(~1 min) dynamics run. The go_charmm.csh script in this
+		directory runs all the test cases.
+
+
+GO BUILDER SCRIPTS:
+======================================================================
+
+go_builder.py		: build a CA go-model 
+go_builder_sc.py	: build a go-model with "side-chains"
+go_build_dimer.py
+go_build_sym_nmer.py
+
+
+AVERAGING OVER SEVERAL MODELS:
+======================================================================
+
+ave_models.py		: averages a set of Go parameter files
+ave_gomodel_golist.py	: averages a set of "go list" files for 
+				CHARMM GOMODEL module
+ave_gomodel_parms.py	: averages a set of Go parameter files
+				for use in conjunction with 
+				CHARMM GOMODEL module
+
+FOR MUTANTS:
+======================================================================
+
+mutate_parm.py		: will take a parameter, a residue to 'mutate', and
+			a scale factor to scale all it's interactions by
+de_dat.py		: produces a list of changes in contact parameters
+			only, suitable for calculating perturbations on mutation
+
+HANDY UTILITIES
+======================================================================
+dump_sc_pdb.py
+write_dihepot.py
+
+

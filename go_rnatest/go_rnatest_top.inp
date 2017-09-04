@@ -1,0 +1,286 @@
+* This CHARMM .top file describes a Go model of rnatest
+*
+
+read rtf card
+* Topology for Go model of rnatest
+*
+   20   1
+MASS 1       G1    344.000000
+MASS 2       G2    344.000000
+MASS 3       G3    328.000000
+MASS 4       G4    304.000000
+MASS 5       G5    328.000000
+MASS 6       G6    328.000000
+MASS 7       G7    344.000000
+MASS 8       G8    304.000000
+MASS 9       G9    344.000000
+MASS 10     G10    304.000000
+MASS 11     G11    328.000000
+MASS 12     G12    328.000000
+MASS 13     G13    344.000000
+MASS 14     G14    344.000000
+MASS 15     G15    305.000000
+MASS 16     G16    304.000000
+MASS 17     G17    328.000000
+MASS 18     G18    305.000000
+MASS 19     G19    305.000000
+MASS 20     G20    304.000000
+MASS 21     G21    344.000000
+MASS 22     G22    304.000000
+MASS 23     G23    328.000000
+MASS 24     G24    328.000000
+MASS 25     G25    344.000000
+MASS 26     G26    328.000000
+MASS 27     G27    344.000000
+MASS 28     G28    305.000000
+MASS 29     G29    344.000000
+MASS 30     G30    344.000000
+MASS 31     G31    304.000000
+MASS 32     G32    304.000000
+MASS 33     G33    305.000000
+MASS 34     G34    305.000000
+MASS 35     G35    344.000000
+MASS 36     G36    304.000000
+MASS 37     G37    344.000000
+MASS 38     G38    304.000000
+MASS 39     G39    305.000000
+MASS 40     G40    305.000000
+MASS 41     G41    344.000000
+MASS 42     G42    305.000000
+MASS 43     G43    304.000000
+MASS 44     G44    304.000000
+MASS 45      W4     72.000000
+
+DECL +CA
+
+AUTOGENERATE ANGLES DIHEDRAL
+
+RESI   G1    0.000
+GROU
+Atom CA   G1   0.000
+Bond CA +CA
+
+RESI   G2    0.000
+GROU
+Atom CA   G2   0.000
+Bond CA +CA
+
+RESI   G3    0.000
+GROU
+Atom CA   G3   0.000
+Bond CA +CA
+
+RESI   G4    0.000
+GROU
+Atom CA   G4   0.000
+Bond CA +CA
+
+RESI   G5    0.000
+GROU
+Atom CA   G5   0.000
+Bond CA +CA
+
+RESI   G6    0.000
+GROU
+Atom CA   G6   0.000
+Bond CA +CA
+
+RESI   G7    0.000
+GROU
+Atom CA   G7   0.000
+Bond CA +CA
+
+RESI   G8    0.000
+GROU
+Atom CA   G8   0.000
+Bond CA +CA
+
+RESI   G9    0.000
+GROU
+Atom CA   G9   0.000
+Bond CA +CA
+
+RESI  G10    0.000
+GROU
+Atom CA  G10   0.000
+Bond CA +CA
+
+RESI  G11    0.000
+GROU
+Atom CA  G11   0.000
+Bond CA +CA
+
+RESI  G12    0.000
+GROU
+Atom CA  G12   0.000
+Bond CA +CA
+
+RESI  G13    0.000
+GROU
+Atom CA  G13   0.000
+Bond CA +CA
+
+RESI  G14    0.000
+GROU
+Atom CA  G14   0.000
+Bond CA +CA
+
+RESI  G15    0.000
+GROU
+Atom CA  G15   0.000
+Bond CA +CA
+
+RESI  G16    0.000
+GROU
+Atom CA  G16   0.000
+Bond CA +CA
+
+RESI  G17    0.000
+GROU
+Atom CA  G17   0.000
+Bond CA +CA
+
+RESI  G18    0.000
+GROU
+Atom CA  G18   0.000
+Bond CA +CA
+
+RESI  G19    0.000
+GROU
+Atom CA  G19   0.000
+Bond CA +CA
+
+RESI  G20    0.000
+GROU
+Atom CA  G20   0.000
+Bond CA +CA
+
+RESI  G21    0.000
+GROU
+Atom CA  G21   0.000
+Bond CA +CA
+
+RESI  G22    0.000
+GROU
+Atom CA  G22   0.000
+Bond CA +CA
+
+RESI  G23    0.000
+GROU
+Atom CA  G23   0.000
+Bond CA +CA
+
+RESI  G24    0.000
+GROU
+Atom CA  G24   0.000
+Bond CA +CA
+
+RESI  G25    0.000
+GROU
+Atom CA  G25   0.000
+Bond CA +CA
+
+RESI  G26    0.000
+GROU
+Atom CA  G26   0.000
+Bond CA +CA
+
+RESI  G27    0.000
+GROU
+Atom CA  G27   0.000
+Bond CA +CA
+
+RESI  G28    0.000
+GROU
+Atom CA  G28   0.000
+Bond CA +CA
+
+RESI  G29    0.000
+GROU
+Atom CA  G29   0.000
+Bond CA +CA
+
+RESI  G30    0.000
+GROU
+Atom CA  G30   0.000
+Bond CA +CA
+
+RESI  G31    0.000
+GROU
+Atom CA  G31   0.000
+Bond CA +CA
+
+RESI  G32    0.000
+GROU
+Atom CA  G32   0.000
+Bond CA +CA
+
+RESI  G33    0.000
+GROU
+Atom CA  G33   0.000
+Bond CA +CA
+
+RESI  G34    0.000
+GROU
+Atom CA  G34   0.000
+Bond CA +CA
+
+RESI  G35    0.000
+GROU
+Atom CA  G35   0.000
+Bond CA +CA
+
+RESI  G36    0.000
+GROU
+Atom CA  G36   0.000
+Bond CA +CA
+
+RESI  G37    0.000
+GROU
+Atom CA  G37   0.000
+Bond CA +CA
+
+RESI  G38    0.000
+GROU
+Atom CA  G38   0.000
+Bond CA +CA
+
+RESI  G39    0.000
+GROU
+Atom CA  G39   0.000
+Bond CA +CA
+
+RESI  G40    0.000
+GROU
+Atom CA  G40   0.000
+Bond CA +CA
+
+RESI  G41    0.000
+GROU
+Atom CA  G41   0.000
+Bond CA +CA
+
+RESI  G42    0.000
+GROU
+Atom CA  G42   0.000
+Bond CA +CA
+
+RESI  G43    0.000
+GROU
+Atom CA  G43   0.000
+Bond CA +CA
+
+RESI  G44    0.000
+GROU
+Atom CA  G44   0.000
+Bond CA +CA
+
+RESI SOL     0.0
+GROU
+Atom W4 W4   0.0
+
+PRES DISU    0.0
+BOND 1CA 2CA
+
+END
+
